@@ -4,9 +4,8 @@
 * should be included in all pages. It controls some layout
 * options and implements exclusive AdminLTE plugins.
 *
-* @Author  Almsaeed Studio
-* @Support <https://www.almsaeedstudio.com>
-* @Email   <abdullah@almsaeedstudio.com>
+* @Author  Md Irshad
+* @Email   <irshadmd039@gmail.com>
 * @version 2.4.0
 * @repository git://github.com/almasaeed2010/AdminLTE.git
 * @license MIT <http://opensource.org/licenses/MIT>
