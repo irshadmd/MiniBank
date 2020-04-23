@@ -37,7 +37,6 @@
 				$sql = "UPDATE transfer_pin SET used_id = '$memberid', used_name='$name', used_date=NOW() WHERE pin = '$pin'";
             	$conn->query($sql);
 			}
-
 			$_SESSION['success'] = 'Member Added successfully';
 		}
 		else{
