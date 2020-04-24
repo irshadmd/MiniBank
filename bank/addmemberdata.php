@@ -43,6 +43,5 @@
 			$_SESSION['error'] = $conn->error;
 		}
 	}
-
 	header('location: mypins.php');
 ?>
