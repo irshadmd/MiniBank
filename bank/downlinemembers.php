@@ -24,7 +24,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Downline Members
+        Downline Members: <?php
+                $member=$user['member_id'];
+                $sql = "SELECT * FROM members WHERE sponcer_info LIKE '%$member%'";
+                $query = $conn->query($sql);
+                echo $query->num_rows;
+              ?>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -59,17 +64,13 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="container">
-            <div class="mypins">
-            <h2>Total Downline members:<?php
-                $member=$user['member_id'];
-                $sql = "SELECT * FROM members WHERE sponcer_info LIKE '%$member%'";
-                $query = $conn->query($sql);
-                echo $query->num_rows;
-              ?></h2><br>
-              <table class="table">
+            <div class="table-responsive" >
+              <br>
+              <table class="table table-bordered">
                   <thead>
                     <th>Memberd Id</th>
                     <th>Member Name</th>
+                    <th>Sponcer</th>
                     <th>Registration Date</th>
                     <th>Level</th>
                   </thead>
@@ -83,6 +84,7 @@
                   <tr>
                     <td><?php echo $row['member_id'] ?></td>
                     <td><?php echo $row['name'] ?></td>
+                    <td><?php echo $row['sponcer'] ?></td>
                     <td><?php echo $row['joining_date'] ?></td>
                     <td><?php echo $row['level'] ?></td>
                   </tr>

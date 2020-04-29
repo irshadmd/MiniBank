@@ -24,7 +24,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Direct Members
+        Direct Members: <?php
+                $member=$user['member_id'];
+                $sql = "SELECT * FROM members WHERE sponcer = '$member'";
+                $query = $conn->query($sql);
+                echo $query->num_rows;
+              ?>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -59,14 +64,9 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="container">
-            <div class="mypins">
-            <h2>Total direct members:<?php
-                $member=$user['member_id'];
-                $sql = "SELECT * FROM members WHERE sponcer = '$member'";
-                $query = $conn->query($sql);
-                echo $query->num_rows;
-              ?></h2><br>
-              <table class="table">
+            <div class="table-responsive">
+            <br>
+              <table class="table table-bordered">
                   <thead>
                     <th>Memberd Id</th>
                     <th>Member Name</th>

@@ -90,7 +90,12 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>4</h3>
+              <?php
+                $member=$user['member_id'];
+                $sql = "SELECT * FROM members WHERE sponcer_info LIKE '%$member%'";
+                $query = $conn->query($sql);
+                echo "<h3>".$query->num_rows."</h3>";
+              ?>
               <p>DOWNLINE</p>
             </div>
             <div class="icon">
