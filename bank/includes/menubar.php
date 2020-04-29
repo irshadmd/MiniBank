@@ -27,7 +27,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="directmembers.php"><i class="fa fa-circle-o"></i> Direct Members</a></li>
-            <li><a href="overtime.php"><i class="fa fa-circle-o"></i> Downline Members</a></li>
+            <li><a href="downlinemembers.php"><i class="fa fa-circle-o"></i> Downline Members</a></li>
             <li><a href="mypins.php"><i class="fa fa-circle-o"></i> My Pins/Registration</a></li>
             <li><a href="generatepin.php"><i class="fa fa-circle-o"></i> Generate Pins</a></li>
             <li><a href="schedule.php"><i class="fa fa-circle-o"></i> Help Again</a></li>

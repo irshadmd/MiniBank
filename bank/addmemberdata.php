@@ -16,9 +16,11 @@
 		$row = $query->fetch_assoc();
 		$level=$row['level'];
 		$level=$level+1;
+		$sponcerinfo=$row['sponcer_info'];
+		$sponcerinfo=$sponcerinfo.','.$sponcer;
 
-    	$sql = "INSERT INTO members (member_id, name,mobile, password, sponcer,joining_date,level)
-      		VALUES ('$memberid', '$name', '$phone','$password','$sponcer', NOW(),'$level')";
+    	$sql = "INSERT INTO members (member_id, name,mobile, password, sponcer,joining_date,level,sponcer_info)
+      		VALUES ('$memberid', '$name', '$phone','$password','$sponcer', NOW(),'$level','$sponcerinfo')";
 		if($conn->query($sql)){
 			$sql="INSERT INTO usedpins(member_id,pin,register,date)
 			 VALUES('$sponcer','$pin','$memberid',NOW())";
