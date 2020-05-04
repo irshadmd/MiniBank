@@ -1,9 +1,9 @@
 <?php
 	include 'includes/session.php';
 
-		$id = $_GET['id'];
+	$id = $_GET['id'];
 
-    $sql = "SELECT * FROM request WHERE member_id = '$id'";
+    $sql = "SELECT * FROM provide_request WHERE member_id = '$id'";
     $query = $conn->query($sql);
     $row = $query->fetch_assoc();
     $name=$row['name'];

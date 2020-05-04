@@ -8,8 +8,9 @@
     	$phone=$_POST['phone'];
 		$password = $_POST['password'];
 		$money=0;
-    $sql = "INSERT INTO members (member_id, name,mobile, password, sponcer,joining_date,level)
-      VALUES ('$memberid', '$name', '$phone','$password','$sponcer', NOW(),0)";
+
+	    $sql = "INSERT INTO members (member_id, name,mobile, password, sponcer,joining_date,level,sponcer_info)
+    	  VALUES ('$memberid', '$name', '$phone','$password','$sponcer', NOW(),0,'admin')";
 		if($conn->query($sql)){
 
 			$sql="INSERT INTO wallet(member_id,money)

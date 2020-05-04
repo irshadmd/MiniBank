@@ -6,9 +6,12 @@
         $membername=$user['name'];
         $selectedPin = $_POST['selectPin'];
 
-        $sql="INSERT INTO provide_help(member_id,name,date) VALUES('$memberid','$membername',NOW())";
+        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $randno = substr(str_shuffle($str_result), 0, 10);
+
+        $sql="INSERT INTO provide_help(member_id,name,provide_help_no,date) VALUES('$memberid','$membername','$randno',NOW())";
         if($conn->query($sql)){
-            $sql="INSERT INTO provide_request(member_id,name,date) VALUES('$memberid','$membername',NOW())";
+            $sql="INSERT INTO provide_request(member_id,name,provide_help_no,date) VALUES('$memberid','$membername','$randno',NOW())";
             $conn->query($sql);
 
             $sql="DELETE FROM pins WHERE pin = '$selectedPin'";

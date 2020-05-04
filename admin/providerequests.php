@@ -1,19 +1,11 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
 <style>
-  .generate {
+  .myprofile {
     padding: 2%;
     background-color: white;
     border-radius: 10px;
     padding: 3%;
-  }
-
-  input:active {
-    border: 1px solid black;
-  }
-
-  input {
-    border: 1px solid black;
   }
 </style>
 
@@ -28,11 +20,11 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Generate Pin
+          Provide Help Requests
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"> Generate Pin</li>
+          <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active"> Provide Help Requests </li>
         </ol>
       </section>
       <!-- Main content -->
@@ -61,27 +53,35 @@
         ?>
         <div class="row">
           <div class="col-xs-12">
-              <div class="generate">
-                <form method="POST" action="generatepindata.php" name="generatepin">
-                  <div class="form-group row">
-                    <label for="memberid" class="col-md-4 col-form-label text-md-right">Member Id </label>
-                    <div class="col-md-6">
-                      <input type="text" id="memberid" class="form-control" name="memberid" required>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="noofpins" class="col-md-4 col-form-label text-md-right">No of Pins </label>
-                    <div class="col-md-6">
-                      <input type="number" id="noofpins" class="form-control" name="noofpins" min="1" required>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-success btn-flat" name="generatepin"><i class="fa fa-check-square-o"></i> Generate</button>
-                </form>
-              </div>
+            <div class="myprofile">
+              <?php
+              $sql = "SELECT * FROM provide_request";
+              $query = $conn->query($sql);
+              if ($query->num_rows > 0) {
+                while ($row = $query->fetch_assoc()) {
+              ?>
+                  <p>
+                    <h3 class="heading"><?php echo $row['name']; ?></h3>
+                    <span class="lead text-muted"><?php echo $row['member_id']; ?></span>
+                    <span><?php $newdate = $row['date'];
+                          echo 'on-' . date("d-m-Y", strtotime($newdate)); ?></span>
+                    <a href="approve.php?id=<?php echo $row['member_id']; ?>" class="btn btn-primary my-2">Approve</a>
+                    <a href="reject.php?id=<?php echo $row['member_id']; ?>" class="btn btn-danger my-2">Reject</a>
+                    <br><br>
+                    <hr>
+                  </p>
+              <?php
+                }
+              } else {
+                echo "No Pending Requests.";
+              }
+              ?>
+            </div>
           </div>
         </div>
       </section>
     </div>
+
     <?php include 'includes/footer.php'; ?>
   </div>
   <?php include 'includes/scripts.php'; ?>

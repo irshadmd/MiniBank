@@ -17,7 +17,7 @@
         <li><a href="changepassword.php"><i class="fa fa-key"></i> <span>Change Password</span></a></li>
         <li><a href="addmember.php"><i class="fa fa-key"></i> <span>Add Member</span></a></li>
         <li><a href="generatepin.php"><i class="fa fa-key"></i> <span>Generate Pin</span></a></li>
-        <li><a href="pinrequests.php"><i class="fa fa-key"></i> <span>Requests</span></a></li>
+        <li><a href="providerequests.php"><i class="fa fa-key"></i> <span>Provide Help Requests</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i>
