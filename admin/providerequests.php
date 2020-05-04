@@ -65,8 +65,8 @@
                     <span class="lead text-muted"><?php echo $row['member_id']; ?></span>
                     <span><?php $newdate = $row['date'];
                           echo 'on-' . date("d-m-Y", strtotime($newdate)); ?></span>
-                    <a href="approve.php?id=<?php echo $row['member_id']; ?>" class="btn btn-primary my-2">Approve</a>
-                    <a href="reject.php?id=<?php echo $row['member_id']; ?>" class="btn btn-danger my-2">Reject</a>
+                    <a href="approve.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-primary my-2">Approve</a>
+                    <a href="reject.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-danger my-2">Reject</a>
                     <br><br>
                     <hr>
                   </p>
