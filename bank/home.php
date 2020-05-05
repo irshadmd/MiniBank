@@ -181,25 +181,28 @@
             </thead>
             <tbody>
               <?php
-                $memberid=$user['member_id'];
-                $sno=1;
-                $sql="SELECT * FROM provide_help WHERE member_id='$memberid'";
-                $query=$conn->query($sql);
-               if($query->num_rows > 0){
-                    while($row = $query->fetch_assoc()){
+              $memberid = $user['member_id'];
+              $sno = 1;
+              $sql = "SELECT * FROM provide_help WHERE member_id='$memberid'";
+              $query = $conn->query($sql);
+              if ($query->num_rows > 0) {
+                while ($row = $query->fetch_assoc()) {
               ?>
                   <tr>
-                    <td><?php echo $sno; $sno=$sno+1;?></td>
+                    <td><?php echo $sno;
+                        $sno = $sno + 1; ?></td>
                     <td>200</td>
-                    <td><?php $newdate = $row['date']; echo date("d-m-Y", strtotime($newdate)); ?></td>
-                    <td><?php echo $row['status'];?></td>
-                    <td>time</td>
+                    <td><?php $newdate = $row['date'];
+                        echo date("d-m-Y", strtotime($newdate)); ?></td>
+                    <td><?php echo $row['status']; ?></td>
+                    <td id="time">00:00:00</td>
+                    <iframe src="../images/bank.png" style="display: none;" onload="getRow('<?php echo $row['approved_datetime']; ?>')"></iframe>
                   </tr>
-              <?php 
-                    }
-                  }else{
-                    echo "empty";
-                  }
+              <?php
+                }
+              } else {
+                echo "empty";
+              }
               ?>
             </tbody>
           </table>
@@ -210,7 +213,37 @@
   </div>
   </div>
   <?php include 'includes/scripts.php'; ?>
-  <?php include 'doublemoney.php'; ?>
+  <script>
+
+    function getRow(approved_datetime) {
+      //got approved_datetime as string
+      console.log("hello")
+
+      var deadline = new Date(approved_datetime);
+      console.log(typeof(deadline))
+      deadline.setHours(deadline.getHours()+4);
+      deadline.setDate(deadline.getDate()+4)
+
+
+      var x = setInterval(function() {
+        var now = new Date().getTime();
+        console.log(deadline, now)
+        var t = deadline - now;
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((t % (1000 * 60)) / 1000);
+        
+        let newhour=hours+(days*24);
+        document.getElementById("time").innerHTML = 
+          newhour + ":" + minutes + ":" + seconds ;
+        if (t < 0) {
+          clearInterval(x);
+          document.getElementById("time").innerHTML = "Finished";
+        }
+      }, 1000);
+    }
+  </script>
 </body>
 
 </html>
