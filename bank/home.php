@@ -3,10 +3,10 @@
 <style>
   .mytable {
     background: white;
-    padding: 2%;
+    padding: 0.5%;
     color: black;
     font-weight: bold;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 10px;
   }
 
@@ -19,6 +19,19 @@
   th {
     background: black;
     color: white;
+  }
+
+  .count {
+    list-style-type: none;
+    text-align: center;
+  }
+
+  .count li {
+    display: inline-block;
+  }
+
+  .dot::after {
+    content: ":";
   }
 </style>
 
@@ -123,7 +136,7 @@
               <div class="icon">
                 <i class="ion ion-alert-circled"></i>
               </div>
-              <a href="downline.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="downlinemembers.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -195,8 +208,13 @@
                     <td><?php $newdate = $row['date'];
                         echo date("d-m-Y", strtotime($newdate)); ?></td>
                     <td><?php echo $row['status']; ?></td>
-                    <td id="time">00:00:00</td>
-                    <iframe src="../images/bank.png" style="display: none;" onload="getRow('<?php echo $row['approved_datetime']; ?>')"></iframe>
+                    <td>
+                      <ul data-countdown="<?php echo $row['approved_datetime']; ?>" class="count">
+                        <li data-hours="00" class="dot">00</li>
+                        <li data-minuts="00" class="dot">00</li>
+                        <li data-seconds="00">00</li>
+                      </ul>
+                    </td>
                   </tr>
               <?php
                 }
@@ -214,35 +232,47 @@
   </div>
   <?php include 'includes/scripts.php'; ?>
   <script>
+    $(function() {
+      $('[data-countdown]').each(function() {
+        var $deadline = new Date($(this).data('countdown'));
+        var $this = $(this);
+        console.log($deadline);
+        var x = setInterval(function() {
+          var now = new Date().getTime();
+          var t = $deadline - now;
 
-    function getRow(approved_datetime) {
-      //got approved_datetime as string
-      console.log("hello")
+          var $dataHours = $this.children('[data-hours]');
+          var $dataMinuts = $this.children('[data-minuts]');
+          var $dataSeconds = $this.children('[data-seconds]');
 
-      var deadline = new Date(approved_datetime);
-      console.log(typeof(deadline))
-      deadline.setHours(deadline.getHours()+4);
-      deadline.setDate(deadline.getDate()+4)
+          var hours = Math.floor(t % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) + (Math.floor(t / (1000 * 60 * 60 * 24))*24);
+          var minuts = Math.floor(t % (1000 * 60 * 60) / (1000 * 60));
+          var seconds = Math.floor(t % (1000 * 60) / (1000));
 
+          if (hours < 10) {
+            hours = '0' + hours;
+          }
+          if (minuts < 10) {
+            minuts = '0' + minuts;
+          }
+          if (seconds < 10) {
+            seconds = '0' + seconds;
+          }
 
-      var x = setInterval(function() {
-        var now = new Date().getTime();
-        console.log(deadline, now)
-        var t = deadline - now;
-        var days = Math.floor(t / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((t % (1000 * 60)) / 1000);
-        
-        let newhour=hours+(days*24);
-        document.getElementById("time").innerHTML = 
-          newhour + ":" + minutes + ":" + seconds ;
-        if (t < 0) {
-          clearInterval(x);
-          document.getElementById("time").innerHTML = "Finished";
-        }
-      }, 1000);
-    }
+          $dataHours.html(hours);
+          $dataMinuts.html(minuts);
+          $dataSeconds.html(seconds);
+          console.log( hours + ':' + minuts + ':' + seconds)
+          if (t <= 0) {
+            clearInterval(x);
+            $dataHours.html('00');
+            $dataMinuts.html('00');
+            $dataSeconds.html('00');
+          }
+
+        }, 1000);
+      })
+    });
   </script>
 </body>
 
