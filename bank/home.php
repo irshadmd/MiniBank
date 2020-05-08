@@ -77,6 +77,16 @@
           unset($_SESSION['success']);
         }
         ?>
+        <hr>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <a href="mypins.php" class="btn btn-block btn-google"><i class="fa fa-users"></i> &nbsp Add Member</a>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <a href="providehelp.php" class="btn btn-block btn-facebook"><i class='icon fa fa-check'></i> &nbsp Help Again</a>
+          </div>
+        </div>
+        <hr>
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-xs-6">
@@ -245,7 +255,7 @@
           var $dataMinuts = $this.children('[data-minuts]');
           var $dataSeconds = $this.children('[data-seconds]');
 
-          var hours = Math.floor(t % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) + (Math.floor(t / (1000 * 60 * 60 * 24))*24);
+          var hours = Math.floor(t % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) + (Math.floor(t / (1000 * 60 * 60 * 24)) * 24);
           var minuts = Math.floor(t % (1000 * 60 * 60) / (1000 * 60));
           var seconds = Math.floor(t % (1000 * 60) / (1000));
 
@@ -262,7 +272,7 @@
           $dataHours.html(hours);
           $dataMinuts.html(minuts);
           $dataSeconds.html(seconds);
-          console.log( hours + ':' + minuts + ':' + seconds)
+          console.log(hours + ':' + minuts + ':' + seconds)
           if (t <= 0) {
             clearInterval(x);
             $dataHours.html('00');
