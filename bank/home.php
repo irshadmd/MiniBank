@@ -192,6 +192,7 @@
           <!-- ./col -->
         </div>
         <!-- /.row -->
+        <!-- provide help tables with timers -->
         <div class="table-responsive mytable">
           <table class="table table-striped table-bordered">
             <caption>help Logs</caption>
