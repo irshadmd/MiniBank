@@ -16,10 +16,11 @@
 
             $sql="DELETE FROM pins WHERE pin = '$selectedPin'";
             $conn->query($sql);
+
+             $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';
         }else{
             $_SESSION['error'] = 'Error!!';
         }
-        $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';
 	}
 	header('location: providehelp.php');
 ?>

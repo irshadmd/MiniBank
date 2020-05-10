@@ -31,7 +31,6 @@
             <li><a href="overtime.php"><i class="fa fa-circle-o"></i> Downline Members</a></li>
             <li><a href="cashadvance.php"><i class="fa fa-circle-o"></i> My Pins/Registration</a></li>
             <li><a href="schedule.php"><i class="fa fa-circle-o"></i> Generate Pins</a></li>
-            <li><a href="schedule.php"><i class="fa fa-circle-o"></i> Help Again</a></li>
           </ul>
         </li>
         <li class="treeview">

@@ -67,7 +67,7 @@
         ?>
         <div class="row">
           <div class="col-xs-12">
-            <div class="container">
+            <div class="mypins">
               <div class="table-responsive">
                 <br>
                 <table class="table table-bordered">
