@@ -33,6 +33,23 @@
   .dot::after {
     content: ":";
   }
+
+  .senddonation {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: blueviolet;
+    padding: 1.5%;
+    text-align: center;
+  }
+
+  .senddonation h3 {
+    border-bottom: 1px solid black;
+    color: white;
+  }
+
+  .senddonation h4 {
+    color: white;
+  }
 </style>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -192,50 +209,117 @@
           <!-- ./col -->
         </div>
         <!-- /.row -->
+        <!-- Send Donation -->
+        <?php
+        $memberid = $user['member_id'];
+        $sql = "SELECT * FROM send_donation WHERE member_id='$memberid' AND status='notapproved'";
+        $query = $conn->query($sql);
+        if ($query->num_rows > 0) {
+        ?>
+          <div class="row">
+
+            <?php
+            while ($row = $query->fetch_assoc()) {
+            ?>
+              <div class="col-md-4">
+                <div class="senddonation">
+                  <h3>Send Donation</h3>
+                  <h4><i class="fa fa-user"></i> <?php echo $row['name']; ?></h4>
+                  <h4><i class="fa fa-money"></i> <?php echo $row['amount']; ?></h4>
+                  <h4><i class="fa fa-phone"></i> <?php echo $row['phoneno']; ?></h4>
+                  <a href="senddonation.php?id=<?php echo $row['id'];?>" class="btn btn-block btn-primary"><i class="fa fa-send"></i> Send Donation</a>
+                </div>
+              </div>
+            <?php
+            }
+            ?>
+          </div>
+        <?php
+        }
+        ?>
+        <!-- Get Donation -->
+        <?php
+        $memberid = $user['member_id'];
+        $sql = "SELECT * FROM get_donation WHERE member_id='$memberid' AND status='notapproved'";
+        $query = $conn->query($sql);
+        if ($query->num_rows > 0) {
+        ?>
+          <div class="row">
+
+            <?php
+            while ($row = $query->fetch_assoc()) {
+            ?>
+              <div class="col-md-4">
+                <div class="senddonation">
+                  <h3>Get Donation</h3>
+                  <h4><i class="fa fa-user"></i> <?php echo $row['name']; ?></h4>
+                  <h4><i class="fa fa-money"></i> <?php echo $row['amount']; ?></h4>
+                  <h4><i class="fa fa-phone"></i> <?php echo $row['phoneno']; ?></h4>
+                  <a href="getdonation.php?id=<?php echo $row['id'];?>" class="btn btn-block btn-primary"><i class="fa fa-download"></i> Accept Donation</a>
+                </div>
+              </div>
+            <?php
+            }
+            ?>
+          </div>
+        <?php
+        }
+        ?>
+        <hr>
         <!-- provide help tables with timers -->
-        <div class="table-responsive mytable">
-          <table class="table table-striped table-bordered">
-            <caption>help Logs</caption>
-            <thead>
-              <th>S.no</th>
-              <th>Amount</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Time</th>
-            </thead>
-            <tbody>
-              <?php
-              $memberid = $user['member_id'];
-              $sno = 1;
-              $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false'";
-              $query = $conn->query($sql);
-              if ($query->num_rows > 0) {
-                while ($row = $query->fetch_assoc()) {
-              ?>
-                  <tr>
-                    <td><?php echo $sno;
-                        $sno = $sno + 1; ?></td>
-                    <td>200</td>
-                    <td><?php $newdate = $row['date'];
-                        echo date("d-m-Y", strtotime($newdate)); ?></td>
-                    <td><?php echo $row['status']; ?></td>
-                    <td>
-                      <ul data-countdown="<?php echo $row['approved_datetime']; ?>" class="count">
-                        <li data-hours="00" class="dot">00</li>
-                        <li data-minuts="00" class="dot">00</li>
-                        <li data-seconds="00">00</li>
-                      </ul>
-                    </td>
-                  </tr>
-              <?php
+        <?php
+        $memberid = $user['member_id'];
+        $sno = 1;
+        $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false'";
+        $query = $conn->query($sql);
+        if ($query->num_rows > 0) {
+        ?>
+          <div class="table-responsive mytable">
+            <table class="table table-striped table-bordered">
+              <caption>help Logs</caption>
+              <thead>
+                <th>S.no</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Time</th>
+              </thead>
+              <tbody>
+                <?php
+                $memberid = $user['member_id'];
+                $sno = 1;
+                $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false'";
+                $query = $conn->query($sql);
+                if ($query->num_rows > 0) {
+                  while ($row = $query->fetch_assoc()) {
+                ?>
+                    <tr>
+                      <td><?php echo $sno;
+                          $sno = $sno + 1; ?></td>
+                      <td><?php echo $row['amount']; ?></td>
+                      <td><?php $newdate = $row['date'];
+                          echo date("d-m-Y", strtotime($newdate)); ?></td>
+                      <td><?php echo $row['status']; ?></td>
+                      <td>
+                        <ul data-countdown="<?php echo $row['approved_datetime']; ?>" class="count">
+                          <li data-hours="00" class="dot">00</li>
+                          <li data-minuts="00" class="dot">00</li>
+                          <li data-seconds="00">00</li>
+                        </ul>
+                      </td>
+                    </tr>
+                <?php
+                  }
+                } else {
+                  echo "empty";
                 }
-              } else {
-                echo "empty";
-              }
-              ?>
-            </tbody>
-          </table>
-        </div>
+                ?>
+              </tbody>
+            </table>
+          </div>
+        <?php
+        }
+        ?>
     </div>
     <?php include 'includes/footer.php'; ?>
     </section>
