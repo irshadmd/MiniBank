@@ -31,7 +31,6 @@
             <li><a href="mypins.php"><i class="fa fa-circle-o"></i> My Pins/Registration</a></li>
             <li><a href="generatepin.php"><i class="fa fa-circle-o"></i> Generate Pins</a></li>
             <li><a href="providehelp.php"><i class="fa fa-circle-o"></i> Help Again</a></li>
-            <li><a href="gethelp.php"><i class="fa fa-circle-o"></i> Get Help</a></li>
           </ul>
         </li>
         <li class="treeview">

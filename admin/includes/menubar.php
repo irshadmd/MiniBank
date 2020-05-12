@@ -18,7 +18,7 @@
       <li><a href="addmember.php"><i class="fa fa-key"></i> <span>Add Member</span></a></li>
       <li><a href="generatepin.php"><i class="fa fa-key"></i> <span>Generate Pin</span></a></li>
       <li><a href="providerequests.php"><i class="fa fa-key"></i> <span>Provide Help Requests</span></a></li>
-      <li><a href="gethelprequests.php"><i class="fa fa-key"></i> <span>Get Help Requests</span></a></li>
+      <li><a href="sendlinks.php"><i class="fa fa-key"></i> <span>Send Link</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i>

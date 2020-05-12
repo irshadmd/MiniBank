@@ -207,7 +207,7 @@
               <?php
               $memberid = $user['member_id'];
               $sno = 1;
-              $sql = "SELECT * FROM provide_help WHERE member_id='$memberid'";
+              $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false'";
               $query = $conn->query($sql);
               if ($query->num_rows > 0) {
                 while ($row = $query->fetch_assoc()) {
