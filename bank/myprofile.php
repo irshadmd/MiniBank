@@ -97,12 +97,6 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="joiningamount" class="col-md-4 col-form-label text-md-right">Joining Amount </label>
-                  <div class="col-md-6">
-                    <input type="text" id="joiningamount" class="form-control" name="joiningamount" value="<?php echo $user['joining_amount'] ?>" readonly>
-                  </div>
-                </div>
-                <div class="form-group row">
                   <label for="phonepay" class="col-md-4 col-form-label text-md-right">Phone Pay No </label>
                   <div class="col-md-6">
                     <input type="text" id="phonepay" class="form-control" name="phonepay" value="<?php echo $user['phone_pay_no'] ?>">

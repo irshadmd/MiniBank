@@ -39,6 +39,19 @@
 				$sql = "UPDATE transfer_pin SET used_id = '$memberid', used_name='$name', used_date=NOW() WHERE pin = '$pin'";
             	$conn->query($sql);
 			}
+
+			// Adding provide help request
+			$amount = 200;
+			$str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+			$randno = substr(str_shuffle($str_result), 0, 10);
+
+			$sql = "INSERT INTO provide_help(member_id,name,provide_help_no,amount,date) 
+				VALUES('$memberid','$name','$randno','$amount',NOW())";
+			if ($conn->query($sql)) {
+				$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,amount,date) 
+					VALUES('$memberid','$name','$randno','$amount',NOW())";
+				$conn->query($sql);
+			}
 			$_SESSION['success'] = 'Member Added successfully';
 		}
 		else{

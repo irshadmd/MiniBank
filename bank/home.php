@@ -50,6 +50,33 @@
   .senddonation h4 {
     color: white;
   }
+
+  .getdonation {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: green;
+    padding: 1.5%;
+    text-align: center;
+  }
+
+  .getdonation h3 {
+    border-bottom: 1px solid black;
+    color: white;
+  }
+
+  .getdonation h4 {
+    color: white;
+  }
+
+  .senddonation ul li {
+    color: red;
+    font-size: 20px;
+  }
+
+  .getdonation ul li {
+    color: red;
+    font-size: 20px;
+  }
 </style>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -220,14 +247,23 @@
 
             <?php
             while ($row = $query->fetch_assoc()) {
+              $prevdate = $row['date'];
+              $date = new DateTime($prevdate);
+              $date->add(new DateInterval('P1DT0H'));
+              $date = $date->format('Y-m-d H:i:s');
             ?>
               <div class="col-md-4">
                 <div class="senddonation">
                   <h3>Send Donation</h3>
+                  <ul data-countdown="<?php echo $date; ?>" class="count">
+                    <li data-hours="00" class="dot">00</li>
+                    <li data-minuts="00" class="dot">00</li>
+                    <li data-seconds="00">00</li>
+                  </ul>
                   <h4><i class="fa fa-user"></i> <?php echo $row['name']; ?></h4>
                   <h4><i class="fa fa-money"></i> <?php echo $row['amount']; ?></h4>
                   <h4><i class="fa fa-phone"></i> <?php echo $row['phoneno']; ?></h4>
-                  <a href="senddonation.php?id=<?php echo $row['id'];?>" class="btn btn-block btn-primary"><i class="fa fa-send"></i> Send Donation</a>
+                  <a href="senddonation.php?id=<?php echo $row['id']; ?>" class="btn btn-block btn-primary"><i class="fa fa-send"></i> Send Donation</a>
                 </div>
               </div>
             <?php
@@ -248,14 +284,23 @@
 
             <?php
             while ($row = $query->fetch_assoc()) {
+              $prevdate = $row['date'];
+              $date = new DateTime($prevdate);
+              $date->add(new DateInterval('P1DT0H'));
+              $date = $date->format('Y-m-d H:i:s');
             ?>
               <div class="col-md-4">
-                <div class="senddonation">
+                <div class="getdonation">
                   <h3>Get Donation</h3>
+                  <ul data-countdown="<?php echo $date; ?>" class="count">
+                    <li data-hours="00" class="dot">00</li>
+                    <li data-minuts="00" class="dot">00</li>
+                    <li data-seconds="00">00</li>
+                  </ul>
                   <h4><i class="fa fa-user"></i> <?php echo $row['name']; ?></h4>
                   <h4><i class="fa fa-money"></i> <?php echo $row['amount']; ?></h4>
                   <h4><i class="fa fa-phone"></i> <?php echo $row['phoneno']; ?></h4>
-                  <a href="getdonation.php?id=<?php echo $row['id'];?>" class="btn btn-block btn-primary"><i class="fa fa-download"></i> Accept Donation</a>
+                  <a href="getdonation.php?id=<?php echo $row['id']; ?>" class="btn btn-block btn-primary"><i class="fa fa-download"></i> Accept Donation</a>
                 </div>
               </div>
             <?php
