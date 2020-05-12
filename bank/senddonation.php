@@ -28,11 +28,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Send Donation
+                    Send Donation Reciept
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active"> Send Donation</li>
+                    <li class="active"> Send Donation Reciept</li>
                 </ol>
             </section>
             <!-- Main content -->
@@ -62,43 +62,43 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="myprofile">
-                            <form method="POST" action="senddonation_data.php?id=<?php echo $_GET['id']; ?>" name="trnid">
-                                <?php $id=$_GET['id']; 
-                                    $sql="SELECT * FROM send_donation WHERE id='$id'";
-                                    $query=$conn->query($sql);
+                            <form method="POST" action="senddonation_data.php?id=<?php echo $_GET['id']; ?>" >
+                                <?php $id = $_GET['id'];
+                                $sql = "SELECT * FROM send_donation WHERE id='$id'";
+                                $query = $conn->query($sql);
                                 while ($row = $query->fetch_assoc()) {
                                 ?>
-                                <div class="form-group row">
-                                    <label for="memberid" class="col-md-4 col-form-label text-md-right">Member Id</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" id="memberid" value="<?php echo $row['send_id'];?>" name="memberid" readonly>
+                                    <div class="form-group row">
+                                        <label for="memberid" class="col-md-4 col-form-label text-md-right">Member Id</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="memberid" value="<?php echo $row['send_id']; ?>" name="memberid" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" id="name" value="<?php echo $row['name'];?>" name="name" readonly>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="name" value="<?php echo $row['name']; ?>" name="name" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="phone" class="col-md-4 col-form-label text-md-right">Phone no</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" id="phone" value="<?php echo $row['phoneno'];?>" name="phone" readonly>
+                                    <div class="form-group row">
+                                        <label for="phone" class="col-md-4 col-form-label text-md-right">Phone no</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="phone" value="<?php echo $row['phoneno']; ?>" name="phone" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
-                                    <div class="col-md-6">
-                                        <input type="number" class="form-control" id="amount" value="<?php echo $row['amount'];?>" name="amount" readonly>
+                                    <div class="form-group row">
+                                        <label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" id="amount" value="<?php echo $row['amount']; ?>" name="amount" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="trnid" class="col-md-4 col-form-label text-md-right">Transaction Id</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" id="trnid" name="trnid" required>
+                                    <div class="form-group row">
+                                        <label for="trnid" class="col-md-4 col-form-label text-md-right">Transaction Id</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="trnid" name="trnid" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php 
+                                <?php
                                 }
                                 ?>
                                 <button type="submit" class="btn btn-success btn-flat" name="senddonation"><i class="fa fa-check-square-o"></i> Send Donation</button>
