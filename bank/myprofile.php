@@ -104,7 +104,7 @@
                 </div>
                 <div class="form-group row">
                   <label for="googlepay" class="col-md-4 col-form-label text-md-right">Google Pay No </label>
-                  <div class="col-md-6">
+                  <div class="col-md-6" >
                     <input type="text" id="googlepay" class="form-control" name="googlepay" value="<?php echo $user['google_pay_no'] ?>">
                   </div>
                 </div>

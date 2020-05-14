@@ -184,6 +184,7 @@
                 $sql = "SELECT * FROM members WHERE sponcer_info LIKE '%$member%'";
                 $query = $conn->query($sql);
                 echo "<h3>" . $query->num_rows . "</h3>";
+
                 ?>
                 <p>DOWNLINE</p>
               </div>
@@ -203,6 +204,7 @@
                 $sql = "SELECT * FROM pins WHERE member_id = '$member'";
                 $query = $conn->query($sql);
                 echo "<h3>" . $query->num_rows . "</h3>";
+                
                 ?>
                 <p>MY PINS</p>
               </div>
