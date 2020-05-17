@@ -54,28 +54,49 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="myprofile">
-              <?php
-              $sql = "SELECT * FROM provide_request";
-              $query = $conn->query($sql);
-              if ($query->num_rows > 0) {
-                while ($row = $query->fetch_assoc()) {
-              ?>
-                  <p>
-                    <h3 class="heading"><?php echo $row['name']; ?></h3>
-                    <span class="lead text-muted"><?php echo $row['member_id']; ?></span>
-                    <span><?php $newdate = $row['date'];
-                          echo 'on-' . date("d-m-Y", strtotime($newdate)); ?></span>
-                    <a href="approve.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-primary my-2">Approve</a>
-                    <a href="reject.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-danger my-2">Reject</a>
-                    <br><br>
-                    <hr>
-                  </p>
-              <?php
-                }
-              } else {
-                echo "No Pending Requests.";
-              }
-              ?>
+              <div class="table-responsive">
+                <br>
+                <table class="table table-bordered">
+                  <thead>
+                    <th>S no.</th>
+                    <th>Memberd Id</th>
+                    <th>Member Name</th>
+                    <th>Sponcer Id</th>
+                    <th>Sponcer Name</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                  </thead>
+                  <?php
+                  $count = 1;
+                  $sql = "SELECT * FROM provide_request";
+                  $query = $conn->query($sql);
+                  if ($query->num_rows > 0) {
+                    while ($row = $query->fetch_assoc()) {
+                  ?>
+                      <tr>
+                        <td><?php echo $count++; ?></td>
+                        <td><?php echo $row['member_id'] ?></td>
+                        <td><?php echo $row['name'] ?></td>
+                        <td><?php echo $row['sponcer_id'] ?></td>
+                        <td><?php echo $row['sponcer_name'] ?></td>
+                        <td><?php echo $row['amount'] ?></td>
+                        <td>
+                          <?php $newdate = $row['date'];
+                          echo date("d-m-Y", strtotime($newdate)); ?>
+                          <a href="provide_approve.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-primary my-2">Approve</a>
+                          <a href="provide_reject.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-danger my-2">Reject</a>
+                        </td>
+                      </tr>
+                      </tbody>
+                  <?php
+                    }
+                  } else {
+                    echo "No Members.";
+                  }
+                  ?>
+                  <tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

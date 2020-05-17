@@ -9,18 +9,26 @@
         $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $randno = substr(str_shuffle($str_result), 0, 10);
 
-        $sql="INSERT INTO provide_help(member_id,name,provide_help_no,amount,date) VALUES('$memberid','$membername','$randno','$amount',NOW())";
-        if($conn->query($sql)){
-            $sql="INSERT INTO provide_request(member_id,name,provide_help_no,amount,date) VALUES('$memberid','$membername','$randno','$amount',NOW())";
-            $conn->query($sql);
-
-            $sql="DELETE FROM pins WHERE pin = '$selectedPin'";
-            $conn->query($sql);
-
-             $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';
+        $sponcer_name="";
+        $sponcer_id=$user['sponcer'];
+        if($sponcer_id=='admin'){
+            $sponcer_name='admin';
         }else{
-            $_SESSION['error'] = 'Error!!';
+            $sql="SELECT * FROM members WHERE member_id='$sponcer_id'";
+            $query=$conn->query($sql);
+            $row=$query->fetch_assoc();
+            $sponcer_name=$row['name'];
         }
+
+        $sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
+					VALUES('$memberid','$membername','$randno','$sponcer_name','$sponcer_id','$amount',NOW())";
+        $conn->query($sql);
+
+        $sql="DELETE FROM pins WHERE pin = '$selectedPin'";
+        $conn->query($sql);
+
+        $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';
+        
 	}
 	header('location: providehelp.php');
 ?>
