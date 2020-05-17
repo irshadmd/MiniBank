@@ -20,11 +20,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Confirm Provide Help List
+                    Get Help Confirm List
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active"> Confirm Provide Help List </li>
+                    <li class="active"> Get Help Confirm List </li>
                 </ol>
             </section>
             <!-- Main content -->
@@ -68,7 +68,7 @@
                                     </thead>
                                     <?php
                                     $count = 1;
-                                    $sql = "SELECT * FROM provide_help WHERE status='pending'";
+                                    $sql = "SELECT * FROM provide_help WHERE status='approved' AND complete='false'";
                                     $query = $conn->query($sql);
                                     if ($query->num_rows > 0) {
                                         while ($row = $query->fetch_assoc()) {
@@ -83,7 +83,7 @@
                                                 <td>
                                                     <?php $newdate = $row['date'];
                                                     echo date("d-m-Y", strtotime($newdate)); ?>
-                                                    <a href="confirmprovide_approve.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-success my-2">Approve for Get help</a>
+                                                    <a href="provide_approve.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-success my-2">Send Link</a>
                                                 </td>
                                             </tr>
                                             </tbody>

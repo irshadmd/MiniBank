@@ -19,6 +19,8 @@
       <li><a href="generatepin.php"><i class="fa fa-key"></i> <span>Generate Pin</span></a></li>
       <li><a href="providerequests.php"><i class="fa fa-key"></i> <span>Pending Provide Help List</span></a></li>
       <li><a href="confirmprovide_list.php"><i class="fa fa-key"></i> <span>Confirm Provide Help List</span></a></li>
+      <li><a href="gethelppending_list.php"><i class="fa fa-key"></i> <span>Pending Get Help List</span></a></li>
+      <li><a href="gethelpconfirm_list.php"><i class="fa fa-key"></i> <span>Get Help Confirm List</span></a></li>
       <li><a href="sendlinks.php"><i class="fa fa-key"></i> <span>Send Link</span></a></li>
       <li class="treeview">
         <a href="#">
