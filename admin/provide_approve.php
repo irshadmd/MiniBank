@@ -9,6 +9,8 @@
 	$memberid=$row['member_id'];
 	$name=$row['name'];
 	$amount=$row['amount'];
+	$sponcer_id=$row['sponcer_id'];
+	$sponcer_name=$row['sponcer_name'];
 
 // $sql = "UPDATE provide_help SET	status='approved',approved_datetime=NOW() WHERE provide_help_no = '$helpno' ";
 // if($conn->query($sql)){
@@ -31,8 +33,8 @@
 // 	$_SESSION['error'] = $conn->error;
 // }
 
-	$sql = "INSERT INTO provide_help(member_id,name,provide_help_no,amount,date) 
-						VALUES('$memberid','$name','$helpno','$amount',NOW())";
+	$sql = "INSERT INTO provide_help(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
+						VALUES('$memberid','$name','$helpno','$sponcer_name','$sponcer_id','$amount',NOW())";
 	if($conn->query($sql)){
 		$sql = "DELETE FROM provide_request WHERE provide_help_no = '$helpno'";
 		$conn->query($sql);
