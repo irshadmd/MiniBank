@@ -35,12 +35,12 @@
         $sql = "UPDATE provide_help SET complete = 'true' WHERE provide_help_no = '$provideno'";
         if ($conn->query($sql)) {
             $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
-                VALUES('$id','$sendmember','$getname','$getphoneno','$amount',NOW())";
+                VALUES('$sendmember','$id','$sendname','$sendphoneno','$amount',NOW())";
             $conn->query($sql); 
             $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,date) 
-                VALUES('$sendmember','$id','$sendname','$sendphoneno','$amount',NOW())";
+                VALUES('$id','$sendmember','$getname','$getphoneno','$amount',NOW())";
             $conn->query($sql);
-                $_SESSION['success'] = 'successfully';
+                $_SESSION['success'] = 'Sent successfully';
         }else{
             $_SESSION['error'] = "Error";
         }
@@ -48,4 +48,4 @@
         $_SESSION['error'] = "Error";
     }
 
-	header('location: sendlinks.php');
+	header('location: gethelpconfirm_list.php');

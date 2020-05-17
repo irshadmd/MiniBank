@@ -17,7 +17,7 @@
     }
 </style>
 
-<body class="hold-transition skin-yellow sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
         <?php include 'includes/navbar.php'; ?>

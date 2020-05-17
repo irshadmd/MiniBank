@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="myprofile">
-                            <h3><?php echo 'Send ' . $_GET['id'] .$_GET['pno']. ' To'; ?></h3>
+                            <h3><?php echo 'Send ' . $_GET['id']. ' To'; ?></h3>
                             <hr>
                             <form action="sendlink_persondata.php?id=<?php echo $_GET['id']; ?>&pno=<?php echo $_GET['pno']; ?>" method="POST">
                                 <div class="form-group row">
@@ -62,7 +62,7 @@
                                     <div class="col-md-6">
                                         <select id="sendmember" class="form-control" name="sendmember" required>
                                             <?php
-                                            $sql = "SELECT * FROM members";
+                                            $sql = "SELECT * FROM provide_help WHERE status='pending'";
                                             $query = $conn->query($sql);
                                             if ($query->num_rows > 0) {
                                                 while ($row = $query->fetch_assoc()) {

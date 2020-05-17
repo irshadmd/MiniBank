@@ -83,7 +83,7 @@
                                                 <td>
                                                     <?php $newdate = $row['date'];
                                                     echo date("d-m-Y", strtotime($newdate)); ?>
-                                                    <a href="provide_approve.php?id=<?php echo $row['provide_help_no']; ?>" class="btn btn-success my-2">Send Link</a>
+                                                    <a href="sendlink_person.php?id=<?php echo $row['member_id']; ?>&pno=<?php echo $row['provide_help_no'];?>" class="btn btn-success my-2">Send Link</a>
                                                 </td>
                                             </tr>
                                             </tbody>
