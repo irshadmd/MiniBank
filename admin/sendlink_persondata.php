@@ -4,6 +4,10 @@
 	if(isset($_POST['sendlink'])){
 
 		$sendmember = $_POST['sendmember'];
+        $str = explode("_", $sendmember);
+        $sendmember=$str[0];
+        $proid= $str[1];
+
         $id=$_GET['id'];
         $provideno=$_GET['pno'];
         
@@ -37,8 +41,8 @@
             $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
                 VALUES('$sendmember','$id','$sendname','$sendphoneno','$amount',NOW())";
             $conn->query($sql); 
-            $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,date) 
-                VALUES('$id','$sendmember','$getname','$getphoneno','$amount',NOW())";
+            $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,date) 
+                VALUES('$id','$sendmember','$getname','$getphoneno','$amount','$proid',NOW())";
             $conn->query($sql);
                 $_SESSION['success'] = 'Sent successfully';
         }else{

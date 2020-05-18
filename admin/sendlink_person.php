@@ -67,7 +67,7 @@
                                             if ($query->num_rows > 0) {
                                                 while ($row = $query->fetch_assoc()) {
                                             ?>
-                                                    <option value="<?php echo $row['member_id']; ?>"><?php echo $row['member_id'] . ' - ' . $row['name']; ?></option>
+                                                    <option value="<?php echo $row['member_id'].'_'.$row['id']; ?>"><?php echo $row['member_id'] . ' - ' . $row['name']; ?></option>
                                             <?php
                                                 }
                                             } else {
