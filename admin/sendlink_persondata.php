@@ -36,7 +36,7 @@
             $getphoneno = $row['mobile'];
         }
 
-        $sql = "UPDATE provide_help SET complete = 'true' WHERE provide_help_no = '$provideno'";
+        $sql = "UPDATE provide_help SET complete = 'true',status='approved' WHERE provide_help_no = '$provideno'";
         if ($conn->query($sql)) {
             $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
                 VALUES('$sendmember','$id','$sendname','$sendphoneno','$amount',NOW())";

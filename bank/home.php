@@ -1,5 +1,6 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
+<?php include 'afterhundredhours.php'; ?>
 <style>
   .mytable {
     background: white;
@@ -204,7 +205,7 @@
                 $sql = "SELECT * FROM pins WHERE member_id = '$member'";
                 $query = $conn->query($sql);
                 echo "<h3>" . $query->num_rows . "</h3>";
-                
+
                 ?>
                 <p>MY PINS</p>
               </div>
@@ -335,7 +336,7 @@
                 <?php
                 $memberid = $user['member_id'];
                 $sno = 1;
-                $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false'";
+                $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND status='pendingGet'";
                 $query = $conn->query($sql);
                 if ($query->num_rows > 0) {
                   while ($row = $query->fetch_assoc()) {

@@ -63,48 +63,48 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="mypins">
-                <form class="form" action="generatepinwithwallet.php" name="generatepinwithwallet" method="POST" style="margin-left:20px; width: 97%;">
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Wallet Balance</label>
-                    <div class="col-sm-10">
-                      <p id="id_balance">
-                        <?php
-                        $member = $user['member_id'];
-                        $sql = "SELECT * FROM wallet WHERE member_id = '$member'";
-                        $query = $conn->query($sql);
-                        while ($row = $query->fetch_assoc()) {
-                          echo $row['money'];
-                        }
-                        ?>
-                      </p>
-                    </div>
+              <form class="form" action="generatepinwithwallet.php" name="generatepinwithwallet" method="POST" style="margin-left:20px; width: 97%;">
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Wallet Balance</label>
+                  <div class="col-sm-10">
+                    <p id="id_balance">
+                      <?php
+                      $member = $user['member_id'];
+                      $sql = "SELECT * FROM wallet WHERE member_id = '$member'";
+                      $query = $conn->query($sql);
+                      while ($row = $query->fetch_assoc()) {
+                        echo $row['money'];
+                      }
+                      ?>
+                    </p>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Pin Cost</label>
-                    <div class="col-sm-10">
-                      <p>Rs.100</p>
-                    </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Pin Cost</label>
+                  <div class="col-sm-10">
+                    <p>Rs.100</p>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Max pin generation</label>
-                    <div class="col-sm-10">
-                      <p id="id_maxpin">0</p>
-                    </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Max pin generation</label>
+                  <div class="col-sm-10">
+                    <p id="id_maxpin">0</p>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">No of PINs</label>
-                    <div class="col-sm-10">
-                      <input type="number" name="noofpins" min="1" id="id_noofpins" required>
-                    </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">No of PINs</label>
+                  <div class="col-sm-10">
+                    <input type="number" name="noofpins" min="1" id="id_noofpins" required>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Total PIN Cost</label>
-                    <div class="col-sm-10">
-                      <input type="number" name="totalcost" id="id_totalcost" readonly required>
-                    </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Total PIN Cost</label>
+                  <div class="col-sm-10">
+                    <input type="number" name="totalcost" id="id_totalcost" readonly required>
                   </div>
-                  <button class="btn btn-primary" id="id_submit" type="submit" name="generatepinwithwallet">Generate</button>
-                </form>
+                </div>
+                <button class="btn btn-primary" id="id_submit" type="submit" name="generatepinwithwallet">Generate</button>
+              </form>
             </div>
           </div>
         </div>
@@ -124,15 +124,15 @@
       });
     });
     $("#id_noofpins").change(function() {
-      var no = $("#id_noofpins").val();
-      var max = $('#id_maxpin').text();
-      var total = no * 100;
-      $('#id_totalcost').val(total);
-      if (no > max) {
-        alert("You can't generate more than " + max);
-        $('#id_totalcost').val("");
-      }
-    });
+          var no = parseInt($("#id_noofpins").val());
+            var max = parseInt($('#id_maxpin').text());
+            var total = no * 100; 
+            $('#id_totalcost').val(total);
+            if (no > max) {
+              alert("You can't generate more than " + max);
+              $('#id_totalcost').val("");
+            }
+          });
   </script>
 </body>
 
