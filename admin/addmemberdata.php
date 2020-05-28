@@ -22,16 +22,14 @@
 			$str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 			$randno = substr(str_shuffle($str_result), 0, 10);
 
-			$sql = "INSERT INTO provide_help(member_id,name,provide_help_no,amount,date) 
-					VALUES('$memberid','$name','$randno','$amount',NOW())";
-			if ($conn->query($sql)) {
-				$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,amount,date) 
-						VALUES('$memberid','$name','$randno','$amount',NOW())";
-				$conn->query($sql);
-			}
+			$sponcer_name = $sponcer;
+			$sponcer_id = $sponcer;
+			$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
+						VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount',NOW())";
+			$conn->query($sql);
 
-			$_SESSION['success'] = 'Member Added successfully';
-		}
+				$_SESSION['success'] = 'Member Added successfully';
+			}
 		else{
 			$_SESSION['error'] = $conn->error;
 		}
