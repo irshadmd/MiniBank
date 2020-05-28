@@ -16,7 +16,6 @@
         <li class=""><a href="home.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="myprofile.php"><i class="fa fa-user"></i> <span>My Profile</span></a></li>
         <li><a href="changepassword.php"><i class="fa fa-key"></i> <span>Change Password</span></a></li>
-        <!-- <li><a href="pinrequest.php"><i class="fas fa-comment-dollar"></i> <span>Send Request</span></a></li> -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i>
