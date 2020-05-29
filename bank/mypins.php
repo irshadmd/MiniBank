@@ -63,37 +63,39 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="mypins">
-                <h2>Total Pins: <?php
-                                $member = $user['member_id'];
-                                $sql = "SELECT * FROM pins WHERE member_id = '$member'";
-                                $query = $conn->query($sql);
-                                echo $query->num_rows;
-                                ?></h2><br>
-                <table class="table">
-                  <thead>
-                    <th>Pin no</th>
-                    <th>Register</th>
-                  </thead>
-                  <?php
-                  $member = $user['member_id'];
-                  $sql = "SELECT * FROM pins WHERE member_id = '$member'";
-                  $query = $conn->query($sql);
-                  if ($query->num_rows > 0) {
-                    while ($row = $query->fetch_assoc()) {
-                  ?>
-                      <tr>
-                        <th><?php echo $row['pin'] ?></th>
-                        <th><button data-id="<?php echo $row['id']; ?>" class="btn btn-success btn-sm btn-flat register">Register</button></th>
-                      </tr>
-                      </tbody>
-                  <?php
-                    }
-                  } else {
-                    echo "No Pins.";
+              <h2>Total Pins: <?php
+                              $member = $user['member_id'];
+                              $sql = "SELECT * FROM pins WHERE member_id = '$member'";
+                              $query = $conn->query($sql);
+                              echo $query->num_rows;
+                              ?></h2><br>
+              <table class="table">
+                <thead>
+                  <th>Pin no</th>
+                  <th>Amount</th>
+                  <th>Register</th>
+                </thead>
+                <?php
+                $member = $user['member_id'];
+                $sql = "SELECT * FROM pins WHERE member_id = '$member'";
+                $query = $conn->query($sql);
+                if ($query->num_rows > 0) {
+                  while ($row = $query->fetch_assoc()) {
+                ?>
+                    <tr>
+                      <th><?php echo $row['pin']; ?></th>
+                      <th><?php echo $row['amount']; ?></th>
+                      <th><button data-id="<?php echo $row['id']; ?>" class="btn btn-success btn-sm btn-flat register">Register</button></th>
+                    </tr>
+                    </tbody>
+                <?php
                   }
-                  ?>
-                  <tbody>
-                </table>
+                } else {
+                  echo "No Pins.";
+                }
+                ?>
+                <tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -124,6 +126,7 @@
         success: function(response) {
           $('#id_pin').val(response.pin);
           $('#memberid').val(response.mem);
+          $('#id_amount').val(response.amount);
         }
       });
     }

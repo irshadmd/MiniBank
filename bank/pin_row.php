@@ -14,11 +14,12 @@
 		$sql = "SELECT * FROM pins WHERE id = '$id'";
 		$query = $conn->query($sql);
     $pin="";
-
+    $amount=0;
 		while($row = $query->fetch_assoc()){
       $pin=$row['pin'];
+      $amount=$row['amount'];
     }
-    $json = array("pin"=>$pin, "mem"=>$memberId);
+    $json = array("pin"=>$pin, "mem"=>$memberId,"amount"=>$amount);
     echo json_encode($json);
 	}
 ?>

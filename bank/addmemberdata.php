@@ -3,6 +3,7 @@
 
 	if(isset($_POST['register'])){
 		$pin = $_POST['pin'];
+		$amount=$_POST['amount'];
 		$memberid = $_POST['memberid'];
 		$name = $_POST['name'];
     	$sponcer=$_POST['sponcer'];
@@ -22,8 +23,8 @@
     	$sql = "INSERT INTO members (member_id, name,mobile, password, sponcer,joining_date,level,sponcer_info)
       		VALUES ('$memberid', '$name', '$phone','$password','$sponcer', NOW(),'$level','$sponcerinfo')";
 		if($conn->query($sql)){
-			$sql="INSERT INTO usedpins(member_id,pin,register,date)
-			 VALUES('$sponcer','$pin','$memberid',NOW())";
+			$sql="INSERT INTO usedpins(member_id,pin,amount,register,date)
+			 VALUES('$sponcer','$pin','$amount','$memberid',NOW())";
 			$query = $conn->query($sql);
 
 			$sql="INSERT INTO wallet(member_id,money)
@@ -41,14 +42,14 @@
 			}
 
 			// Adding provide help request
-			$amount = 200;
+			$amount_p = $amount;
 			$str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 			$randno = substr(str_shuffle($str_result), 0, 10);
 
 			$sponcer_name=$user['name'];
 			$sponcer_id=$user['member_id'];			
 			$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
-					VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount',NOW())";
+					VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount_p',NOW())";
 			$conn->query($sql);
 
 			$_SESSION['success'] = 'Member Added successfully';
