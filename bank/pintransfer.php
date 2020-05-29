@@ -71,16 +71,16 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="pins">
-                <div class="form-group row">
-                  <div class="col-sm-10">
-                    <input class="form-control" type="text" id="searchin" placeholder="Enter Member Id">
-                    <button class="btn btn-primary btn-sm btn searchbt" type="button">Search</button>
-                  </div>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" id="searchin" placeholder="Enter Member Id">
+                  <button class="btn btn-primary btn-sm btn searchbt" type="button">Search</button>
                 </div>
+              </div>
 
-                <div class="memberinfo">
+              <div class="memberinfo">
 
-                </div>
+              </div>
 
 
 
@@ -93,6 +93,28 @@
   </div>
   <?php include 'includes/scripts.php'; ?>
   <script type="text/javascript">
+    $(document).on('change', "#pack", function() {
+      var pack_val = $("#pack").val();
+      var url = 'getpin.php';
+      console.log("checking", pack_val);
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+          pack_val: pack_val
+        },
+        dataType: 'json',
+        success: function(data) {
+          console.log("tested", data.total_pin);
+          $("#selectPin").html(data.ops);
+          $('#avpins').val(data.total_pin);
+          $("#id_transferpin").attr({
+            "max": data.total_pin,
+          });
+        }
+      });
+    });
+
     $(function() {
       $('.searchbt').click(function(e) {
         e.preventDefault();
@@ -129,19 +151,16 @@
             $('.memberinfo').append(el);
             $('.memberinfo').append(el2);
 
-            var form = "<form class='form' action='pintransferdata.php' name='pintransfer' method='POST' style='margin-left:20px; width: 97%;'><div class='form-group row' ><h3>Available PINs</h3></div><div class='form-group row'><label  class='col-sm-2 col-form-label'>Transfer to</label><div class='col-sm-10'><input type='text' name='transferto' id='id_transferto' readonly></div></div><div class='form-group row'><label  class='col-sm-2 col-form-label'>Available PINS</label><div class='col-sm-10'><input id='avpins' type='number' name='availablepin' value='' readonly></div></div><div class='form-group row'><label  class='col-sm-2 col-form-label'>Transfer PINS</label><div class='col-sm-10'><input type='number' id='id_transferpin' name='transferpin' min='1'></div></div><button class='btn btn-primary' id='id_submit' type='submit' name='pintransfer'>Transfer</button></form>";
+            var form = "<form class='form' action='pintransferdata.php' name='pintransfer' method='POST' style='margin-left:20px; width: 97%;'><div class='form-group row' ><h3>Available PINs</h3></div><div class='form-group row'><label  class='col-sm-2 col-form-label'>Transfer to</label><div class='col-sm-10'><input type='text' class='form-control' name='transferto' id='id_transferto' readonly></div></div><div class='form-group row'><label for='pack' class='col-sm-2 col-form-label text-md-right'>Select Pack </label> <div class='col-sm-10'><select name='amount' class='form-control' id='pack' required><option value='0'> Select Pack </option><?php $sql = 'SELECT * FROM pack';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      $query = $conn->query($sql);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      if ($query->num_rows > 0) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        while ($row = $query->fetch_assoc()) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          echo '<option value=' . $row['amount'] . '>' . $row['amount'] . '</option>';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      } ?></select></div></div><div class='form-group row'><label  class='col-sm-2 col-form-label'>Available PINS</label><div class='col-sm-10'><input id='avpins' class='form-control' type='number' name='availablepin' value='' readonly></div></div><div class='form-group row'><label  class='col-sm-2 col-form-label'>Transfer PINS</label><div class='col-sm-10'><input type='number' class='form-control' id='id_transferpin' name='transferpin' min='1'></div></div><button class='btn btn-primary' id='id_submit' type='submit' name='pintransfer'> Transfer </button></form>";
 
             $('.memberinfo').after(form);
-
             $('#id_transferto').val(response.member_id);
-            $('#avpins').val('<?php $member = $user['member_id'];
-                              $sql = "SELECT * FROM pins WHERE member_id = '$member'";
-                              $query = $conn->query($sql);
-                              echo $query->num_rows; ?>');
-            var a = $('#avpins').val();
-            $("#id_transferpin").attr({
-              "max": a,
-            });
           } else {
             var err = "<p id='err' style='color:red;'>Member Not found</p>";
             $('.memberinfo').append(err);

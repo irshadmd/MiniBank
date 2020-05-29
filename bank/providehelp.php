@@ -91,7 +91,7 @@
                   <label for="selectPin" class="col-md-4 col-form-label text-md-right">Select Pin </label>
                   <div class="col-md-6">
                     <select name="selectPin" id="selectPin" class="form-control" required>
-                      
+
                     </select>
                   </div>
                 </div>
@@ -115,8 +115,9 @@
         data: {
           pack_val: pack_val
         },
+        dataType: 'json',
         success: function(data) {
-          $("#selectPin").html(data);
+          $("#selectPin").html(data.ops);
         }
       });
     });
