@@ -2,7 +2,9 @@
 	include 'includes/session.php';
 	if(isset($_POST['generatepin'])){
 		$memberid = $_POST['memberid'];
-		$noofpins = $_POST['noofpins'];
+    $noofpins = $_POST['noofpins'];
+    $amount = $_POST['amount'];
+    
     $sql="SELECT * From members where member_id='$memberid'";
     $query = $conn->query($sql);
 		if($query->num_rows < 1){
@@ -11,7 +13,7 @@
       for ($i = 0; $i <$noofpins; $i++){
         $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $pin=substr(str_shuffle($str_result),0,8);
-        $sql="INSERT INTO pins(member_id,pin) VALUES('$memberid','$pin')";
+        $sql="INSERT INTO pins(member_id,pin,amount) VALUES('$memberid','$pin','$amount')";
         $query = $conn->query($sql);
       }
       $_SESSION['success'] = 'Pin Generated successfully';

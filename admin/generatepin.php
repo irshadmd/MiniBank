@@ -61,23 +61,41 @@
         ?>
         <div class="row">
           <div class="col-xs-12">
-              <div class="generate">
-                <form method="POST" action="generatepindata.php" name="generatepin">
-                  <div class="form-group row">
-                    <label for="memberid" class="col-md-4 col-form-label text-md-right">Member Id </label>
-                    <div class="col-md-6">
-                      <input type="text" id="memberid" class="form-control" name="memberid" required>
-                    </div>
+            <div class="generate">
+              <form method="POST" action="generatepindata.php" name="generatepin">
+                <div class="form-group row">
+                  <label for="pack" class="col-md-4 col-form-label text-md-right">Select Pack </label>
+                  <div class="col-md-6">
+                    <select name="amount" id="pack" class="form-control" required>
+                      <?php
+                      $sql = "SELECT * FROM pack";
+                      $query = $conn->query($sql);
+                      if ($query->num_rows > 0) {
+                        while ($row = $query->fetch_assoc()) {
+                      ?>
+                          <option value="<?php echo $row['amount'] ?>"><?php echo $row['amount'] ?></option>
+                      <?php
+                        }
+                      }
+                      ?>
+                    </select>
                   </div>
-                  <div class="form-group row">
-                    <label for="noofpins" class="col-md-4 col-form-label text-md-right">No of Pins </label>
-                    <div class="col-md-6">
-                      <input type="number" id="noofpins" class="form-control" name="noofpins" min="1" required>
-                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="memberid" class="col-md-4 col-form-label text-md-right">Member Id </label>
+                  <div class="col-md-6">
+                    <input type="text" id="memberid" class="form-control" name="memberid" required>
                   </div>
-                  <button type="submit" class="btn btn-success btn-flat" name="generatepin"><i class="fa fa-check-square-o"></i> Generate</button>
-                </form>
-              </div>
+                </div>
+                <div class="form-group row">
+                  <label for="noofpins" class="col-md-4 col-form-label text-md-right">No of Pins </label>
+                  <div class="col-md-6">
+                    <input type="number" id="noofpins" class="form-control" name="noofpins" min="1" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-flat" name="generatepin"><i class="fa fa-check-square-o"></i> Generate</button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
