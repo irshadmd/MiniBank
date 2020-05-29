@@ -63,42 +63,44 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="mypins table-responsive">
-                <table class="table table-bordered">
-                  <thead>
-                    <th>S.No</th>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Used for Member ID</th>
-                    <th>Used for Member Name</th>
-                    <th>Used date</th>
-                    <th>PIN</th>
-                  </thead>
-                  <?php
-                  $counter = 0;
-                  $member = $user['member_id'];
-                  $sql = "SELECT * FROM transfer_pin WHERE member_id = '$member'";
-                  $query = $conn->query($sql);
-                  if ($query->num_rows > 0) {
-                    while ($row = $query->fetch_assoc()) {
-                  ?>
-                      <tr>
-                        <td><?php echo ++$counter; ?></td>
-                        <td><?php echo $row['transfer_to'] ?></td>
-                        <td><?php echo $row['transfer_to_name'] ?></td>
-                        <td><?php echo $row['used_id'] ?></td>
-                        <td><?php echo $row['used_name'] ?></td>
-                        <td><?php echo $row['used_date'] ?></td>
-                        <td><?php echo $row['pin'] ?></td>
-                      </tr>
-                      </tbody>
-                  <?php
-                    }
-                  } else {
-                    echo "No Transfer.";
+              <table class="table table-bordered">
+                <thead>
+                  <th>S.No</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Used for Member ID</th>
+                  <th>Used for Member Name</th>
+                  <th>Used date</th>
+                  <th>PIN</th>
+                  <th>Amount</th>
+                </thead>
+                <?php
+                $counter = 0;
+                $member = $user['member_id'];
+                $sql = "SELECT * FROM transfer_pin WHERE member_id = '$member'";
+                $query = $conn->query($sql);
+                if ($query->num_rows > 0) {
+                  while ($row = $query->fetch_assoc()) {
+                ?>
+                    <tr>
+                      <td><?php echo ++$counter; ?></td>
+                      <td><?php echo $row['transfer_to'] ?></td>
+                      <td><?php echo $row['transfer_to_name'] ?></td>
+                      <td><?php echo $row['used_id'] ?></td>
+                      <td><?php echo $row['used_name'] ?></td>
+                      <td><?php echo $row['used_date'] ?></td>
+                      <td><?php echo $row['pin'] ?></td>
+                      <td><?php echo $row['amount'] ?></td>
+                    </tr>
+                    </tbody>
+                <?php
                   }
-                  ?>
-                  <tbody>
-                </table>
+                } else {
+                  echo "No Transfer.";
+                }
+                ?>
+                <tbody>
+              </table>
             </div>
           </div>
         </div>

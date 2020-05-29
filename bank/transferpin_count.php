@@ -69,6 +69,7 @@
                   <th>ID</th>
                   <th>Name</th>
                   <th>No of pins</th>
+                  <th>Amount</th>
                   <th>Date</th>
                 </thead>
                 <?php
@@ -84,6 +85,7 @@
                       <td><?php echo $row['member_id'] ?></td>
                       <td><?php echo $row['name'] ?></td>
                       <td><?php echo $row['noofpins'] ?></td>
+                      <td><?php echo $row['amount'] ?></td>
                       <td><?php echo $row['date'] ?></td>
                     </tr>
                     </tbody>

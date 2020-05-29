@@ -63,38 +63,40 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="mypins table-responsive">
-                <table class="table table-bordered">
-                  <thead>
-                    <th>S.No</th>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>No of pins</th>
-                    <th>Date</th>
-                  </thead>
-                  <?php
-                  $counter = 0;
-                  $member = $user['member_id'];
-                  $sql = "SELECT * FROM pin_report WHERE member_id = '$member'";
-                  $query = $conn->query($sql);
-                  if ($query->num_rows > 0) {
-                    while ($row = $query->fetch_assoc()) {
-                  ?>
-                      <tr>
-                        <td><?php echo ++$counter; ?></td>
-                        <td><?php echo $row['received_from'] ?></td>
-                        <td><?php echo $row['received_from_name'] ?></td>
-                        <td><?php echo $row['noofpins'] ?></td>
-                        <td><?php echo $row['date'] ?></td>
-                      </tr>
-                      </tbody>
-                  <?php
-                    }
-                  } else {
-                    echo "No Received.";
+              <table class="table table-bordered">
+                <thead>
+                  <th>S.No</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>No of pins</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </thead>
+                <?php
+                $counter = 0;
+                $member = $user['member_id'];
+                $sql = "SELECT * FROM pin_report WHERE member_id = '$member'";
+                $query = $conn->query($sql);
+                if ($query->num_rows > 0) {
+                  while ($row = $query->fetch_assoc()) {
+                ?>
+                    <tr>
+                      <td><?php echo ++$counter; ?></td>
+                      <td><?php echo $row['received_from'] ?></td>
+                      <td><?php echo $row['received_from_name'] ?></td>
+                      <td><?php echo $row['noofpins'] ?></td>
+                      <td><?php echo $row['amount'] ?></td>
+                      <td><?php echo $row['date'] ?></td>
+                    </tr>
+                    </tbody>
+                <?php
                   }
-                  ?>
-                  <tbody>
-                </table>
+                } else {
+                  echo "No Received.";
+                }
+                ?>
+                <tbody>
+              </table>
             </div>
           </div>
         </div>
