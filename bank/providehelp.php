@@ -67,23 +67,34 @@
           <div class="col-xs-12">
             <div class="mypins">
               <form action="providehelp_data.php" method="POST" onsubmit="return validate();" name="providehelp">
-                <select name="selectPin" id="selectPin" required>
-                  <option value="0">Select pin</option>
-                  <?php
-                  $member = $user['member_id'];
-                  $sql = "SELECT * FROM pins WHERE member_id = '$member'";
-                  $query = $conn->query($sql);
-                  if ($query->num_rows > 0) {
-                    while ($row = $query->fetch_assoc()) {
-                  ?>
-                      <option value="<?php echo $row['pin'] ?>"><?php echo $row['pin'] ?></option>
-                  <?php
-                    }
-                  }
-                  ?>
-                </select>
-                <br>
-                <br>
+                <div class="form-group row">
+                  <label for="pack" class="col-md-4 col-form-label text-md-right">Select Pack </label>
+                  <div class="col-md-6">
+                    <select name="amount" id="pack" class="form-control" required>
+                      <option value="0">Select Pack</option>
+                      <?php
+                      $sql = "SELECT * FROM pack";
+                      $query = $conn->query($sql);
+                      if ($query->num_rows > 0) {
+                        while ($row = $query->fetch_assoc()) {
+                      ?>
+                          <option value="<?php echo $row['amount'] ?>"><?php echo $row['amount'] ?></option>
+                      <?php
+                        }
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="selectPin" class="col-md-4 col-form-label text-md-right">Select Pin </label>
+                  <div class="col-md-6">
+                    <select name="selectPin" id="selectPin" class="form-control" required>
+                      
+                    </select>
+                  </div>
+                </div>
                 <input type="submit" class="btn btn-primary" name="providehelp">
               </form>
             </div>
@@ -95,15 +106,20 @@
   </div>
   <?php include 'includes/scripts.php'; ?>
   <script type="text/javascript">
-    function validate() {
-      let val = $('#selectPin option:selected').val()
-      if (val == 0) {
-        alert("Select Pin")
-        return false
-      } else {
-        return true
-      }
-    }
+    $("#pack").change(function() {
+      var pack_val = $("#pack").val();
+      var url = 'getpin.php';
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+          pack_val: pack_val
+        },
+        success: function(data) {
+          $("#selectPin").html(data);
+        }
+      });
+    });
   </script>
 </body>
 

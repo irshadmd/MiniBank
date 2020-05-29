@@ -5,7 +5,7 @@
 		$memberid = $user['member_id'];
         $membername=$user['name'];
         $selectedPin = $_POST['selectPin'];
-        $amount=200;
+        $amount=$_POST['amount'];
         $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $randno = substr(str_shuffle($str_result), 0, 10);
 

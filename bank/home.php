@@ -318,7 +318,7 @@
         <?php
         $memberid = $user['member_id'];
         $sno = 1;
-        $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false'";
+        $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND status='pendingGet'";
         $query = $conn->query($sql);
         if ($query->num_rows > 0) {
         ?>
