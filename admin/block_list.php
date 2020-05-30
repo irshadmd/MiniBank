@@ -28,7 +28,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Blocked Users: <?php
+                    Blocked Members: <?php
                                     $sql = "SELECT * FROM block";
                                     $query = $conn->query($sql);
                                     echo $query->num_rows;

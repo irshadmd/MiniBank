@@ -74,6 +74,47 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="myprofile">
+                            <h4>Added Packs</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>S no.</th>
+                                        <th>Pack Amount</th>
+                                        <th>Added Date</th>
+                                    </thead>
+                                    <?php
+                                    $count = 1;
+                                    $sql = "SELECT * FROM pack";
+                                    $query = $conn->query($sql);
+                                    if ($query->num_rows > 0) {
+                                        while ($row = $query->fetch_assoc()) {
+                                    ?>
+                                            <tr>
+                                                <td><?php echo $count++; ?></td>
+                                                <td><?php echo $row['amount'] ?></td>
+                                                <td>
+                                                    <?php echo $row['date'] ?>
+                                                    &nbsp;
+                                                    <a href="delete_pack.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "No Pack.";
+                                    }
+                                    ?>
+                                    <tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
 

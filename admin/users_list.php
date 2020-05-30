@@ -28,7 +28,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Total Users: <?php
+                    Total Members: <?php
                                     $sql = "SELECT * FROM members";
                                     $query = $conn->query($sql);
                                     echo $query->num_rows;
@@ -36,7 +36,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active"> Users List</li>
+                    <li class="active"> Members List</li>
                 </ol>
             </section>
             <!-- Main content -->
