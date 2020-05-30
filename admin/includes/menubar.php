@@ -22,6 +22,8 @@
       <li><a href="gethelppending_list.php"><i class="fa fa-key"></i> <span>Pending Get Help List</span></a></li>
       <li><a href="gethelpconfirm_list.php"><i class="fa fa-key"></i> <span>Get Help Confirm List</span></a></li>
       <li><a href="addpack.php"><i class="fa fa-key"></i> <span>Add Pack</span></a></li>
+      <li><a href="users_list.php"><i class="fa fa-users"></i> Users List</a></li>
+      <li><a href="block_list.php"><i class="fa fa-users"></i> Block List</a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i>
