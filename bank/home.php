@@ -121,6 +121,17 @@
           ";
           unset($_SESSION['success']);
         }
+        $sql="SELECT * FROM news";
+        $query=$conn->query($sql);
+        while($row=$query->fetch_assoc()){
+          echo "
+            <div class='alert alert-info alert-dismissible'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4><i class='icon fa fa-forward'></i>".$row['title']."</h4>
+              " . $row['message'] . "
+            </div>
+          ";
+        }
         ?>
         <hr>
         <div class="row">
