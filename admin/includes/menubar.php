@@ -30,8 +30,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="employee.php"><i class="fa fa-circle-o"></i> Provide Help</a></li>
-          <li><a href="overtime.php"><i class="fa fa-circle-o"></i> Get Help</a></li>
+          <li><a href="providehelp_history.php"><i class="fa fa-circle-o"></i> Provide Help</a></li>
+          <li><a href="gethelp_history.php"><i class="fa fa-circle-o"></i> Get Help</a></li>
         </ul>
       </li>
     </ul>

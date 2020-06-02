@@ -28,12 +28,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Get Help History
+                    Provide Help History
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li> Help History</li>
-                    <li class="active"> Get Help History</li>
+                    <li class="active"> Provide Help History</li>
                 </ol>
             </section>
             <!-- Main content -->
@@ -65,7 +65,7 @@
                         <div class="mypins table-responsive">
                             <?php
                             $member = $user['member_id'];
-                            $sql = "SELECT * FROM get_donation WHERE member_id = '$member'";
+                            $sql = "SELECT * FROM send_donation";
                             $query = $conn->query($sql);
                             if ($query->num_rows > 0) {
                             ?>
@@ -81,14 +81,14 @@
                                     <?php
                                     $counter = 0;
                                     $member = $user['member_id'];
-                                    $sql = "SELECT * FROM get_donation WHERE member_id = '$member'";
+                                    $sql = "SELECT * FROM send_donation";
                                     $query = $conn->query($sql);
                                     if ($query->num_rows > 0) {
                                         while ($row = $query->fetch_assoc()) {
                                     ?>
                                             <tr>
                                                 <td><?php echo ++$counter; ?></td>
-                                                <td><?php echo $row['get_id'] ?></td>
+                                                <td><?php echo $row['send_id'] ?></td>
                                                 <td><?php echo $row['name'] ?></td>
                                                 <td><?php echo $row['amount'] ?></td>
                                                 <td><?php echo $row['phoneno'] ?></td>
