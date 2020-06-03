@@ -78,14 +78,14 @@
                                         <th>Registration Date</th>
                                     </thead>
                                     <?php
-                                    $count=1;
+                                    $count = 1;
                                     $sql = "SELECT * FROM members";
                                     $query = $conn->query($sql);
                                     if ($query->num_rows > 0) {
                                         while ($row = $query->fetch_assoc()) {
                                     ?>
                                             <tr>
-                                                <td><?php echo $count++;?></td>
+                                                <td><?php echo $count++; ?></td>
                                                 <td><?php echo $row['member_id'] ?></td>
                                                 <td><?php echo $row['name'] ?></td>
                                                 <td><?php echo $row['sponcer'] ?></td>
@@ -93,7 +93,7 @@
                                                 <td>
                                                     <?php echo $row['joining_date'] ?>
                                                     &nbsp;
-                                                    <a href="block.php?id=<?php echo $row['member_id'];?>" class="btn btn-danger">Block</a>
+                                                    <a href="block.php?id=<?php echo $row['member_id']; ?>" class="btn btn-danger" style="border-radius: 18px;"><i class="fa fa-warning"></i> &nbsp Block</a>
                                                 </td>
                                             </tr>
                                             </tbody>

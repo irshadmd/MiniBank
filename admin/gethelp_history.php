@@ -73,6 +73,7 @@
                                     <thead>
                                         <th>S.No</th>
                                         <th>ID</th>
+                                        <th>Get From</th>
                                         <th>Name</th>
                                         <th>Amount</th>
                                         <th>Phone</th>
@@ -88,6 +89,7 @@
                                     ?>
                                             <tr>
                                                 <td><?php echo ++$counter; ?></td>
+                                                <td><?php echo $row['member_id'] ?></td>
                                                 <td><?php echo $row['get_id'] ?></td>
                                                 <td><?php echo $row['name'] ?></td>
                                                 <td><?php echo $row['amount'] ?></td>

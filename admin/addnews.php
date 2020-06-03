@@ -107,7 +107,7 @@
                                                 <td>
                                                     <?php echo $row['date'] ?>
                                                     &nbsp;
-                                                    <a href="delete_news.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                                                    <a href="delete_news.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" style="border-radius: 18px;"><i class="fa fa-warning"></i> &nbsp Delete</a>
                                                 </td>
                                             </tr>
                                             </tbody>

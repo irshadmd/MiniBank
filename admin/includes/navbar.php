@@ -3,6 +3,7 @@
     margin-top: 7px;
     float: right;
     margin-right: 10px;
+    border-radius: 15px!important;
   }
 </style>
 <header class="main-header">
@@ -19,7 +20,7 @@
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
-    <a href="logout.php" class="btn btn-danger btn-flat logoutbt">Logout</a>
+    <a href="logout.php" class="btn btn-danger btn-flat logoutbt"><i class="fa fa-sign-out"></i> &nbsp Logout</a>
 
     <div class="navbar-custom-menu">
     </div>

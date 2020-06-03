@@ -34,7 +34,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-circle-o"></i>
+            <i class="fa fa-bookmark"></i>
             <span>Pins</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
