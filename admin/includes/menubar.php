@@ -19,6 +19,7 @@
       <li><a href="confirmprovide_list.php"><i class="fa fa-list"></i> <span>Confirm Provide Help List</span></a></li>
       <li><a href="gethelppending_list.php"><i class="fa fa-list"></i> <span>Pending Get Help List</span></a></li>
       <li><a href="gethelpconfirm_list.php"><i class="fa fa-list"></i> <span>Get Help Confirm List</span></a></li>
+      <li><a href="oneclicksend.php"><i class="fa fa-bookmark"></i> Save for Later</a></li>
       <li><a href="block_list.php"><i class="fa fa-trash"></i> Block List</a></li>
 
       <li class="treeview">

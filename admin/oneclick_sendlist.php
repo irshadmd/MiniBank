@@ -24,8 +24,9 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active"><a href="gethelpconfirm_list.php"> Get Help Confirm List</a></li>
-                    <li> Send To </li>
+                    <li> Save For Later </li>
+                    <li> Get Help Confirm List </li>
+                    <li class="active"> Send To</li>
                 </ol>
             </section>
             <!-- Main content -->
@@ -57,7 +58,7 @@
                         <div class="myprofile">
                             <h3><?php echo 'Send ' . $_GET['id'] . ' To'; ?></h3>
                             <hr>
-                            <form action="sendlink_persondata.php?id=<?php echo $_GET['id']; ?>&pno=<?php echo $_GET['pno']; ?>" method="POST">
+                            <form action="oneclick_savedate.php?id=<?php echo $_GET['id']; ?>&pno=<?php echo $_GET['pno']; ?>" method="POST">
                                 <div class="form-group row">
                                     <label for="sendmember" class="col-md-4 col-form-label text-md-right">Select</label>
                                     <div class="col-md-6">
@@ -79,7 +80,7 @@
                                         <br>
                                     </div>
                                 </div>
-                                <button type="submit" name="sendlink" class="btn btn-primary">Send</button>
+                                <button type="submit" name="save" class="btn btn-primary">Save</button>
                             </form>
                         </div>
                     </div>
