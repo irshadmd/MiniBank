@@ -121,13 +121,13 @@
           ";
           unset($_SESSION['success']);
         }
-        $sql="SELECT * FROM news";
-        $query=$conn->query($sql);
-        while($row=$query->fetch_assoc()){
+        $sql = "SELECT * FROM news";
+        $query = $conn->query($sql);
+        while ($row = $query->fetch_assoc()) {
           echo "
             <div class='alert alert-info alert-dismissible'>
               <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-              <h4><i class='icon fa fa-forward'></i>".$row['title']."</h4>
+              <h4><i class='icon fa fa-forward'></i>" . $row['title'] . "</h4>
               " . $row['message'] . "
             </div>
           ";
@@ -159,7 +159,13 @@
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3>2400</h3>
+                <?php
+                $member = $user['member_id'];
+                $sql = "SELECT * FROM wallet WHERE member_id = '$member'";
+                $query = $conn->query($sql);
+                $row=$query->fetch_assoc();
+                echo "<h3>" . $row['growth'] . "</h3>";
+                ?>
                 <p>GROWTH</p>
               </div>
               <div class="icon">

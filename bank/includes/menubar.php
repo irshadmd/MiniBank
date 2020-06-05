@@ -34,7 +34,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-bookmark"></i>
+            <i class="fa fa-map-pin"></i>
             <span>Pins</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -49,7 +49,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-circle-o"></i>
+            <i class="fa fa-money"></i>
             <span>My Income</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -62,14 +62,14 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-circle-o"></i>
+            <i class="fa fa-google-wallet"></i>
             <span>Wallet</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="employee.php"><i class="fa fa-circle-o"></i> Working Wallet</a></li>
+            <li><a href="workingwallet.php"><i class="fa fa-circle-o"></i> Working Wallet</a></li>
           </ul>
         </li>
         <li class="treeview">

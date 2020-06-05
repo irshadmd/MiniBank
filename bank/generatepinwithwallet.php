@@ -5,10 +5,11 @@
 		$noofpins = $_POST['noofpins'];
 		$totalcost = $noofpins*100;
     $money=0;
+    $narration="Pin Generated";
     $sql="SELECT * From wallet where member_id='$memberid'";
     $query = $conn->query($sql);
 		if($query->num_rows < 1){
-			$_SESSION['error'] = 'oops!..Something went wrong.'.$memberid;
+			$_SESSION['error'] = 'oops!..Something went wrong.';
 		}else{
       $sql="SELECT * From wallet where member_id='$memberid'";
       $query = $conn->query($sql);
@@ -24,7 +25,14 @@
         $sql="INSERT INTO pins(member_id,pin) VALUES('$memberid','$pin')";
         $query = $conn->query($sql);
       }
-      $_SESSION['success'] = 'Pin Generated successfully';
+
+      $sql = "INSERT INTO working_wallet(member_id,debit,narration) VALUES('$memberid','$totalcost','$narration')";
+      if($conn->query($sql)){
+        $_SESSION['success'] = 'Pin Generated successfully';
+      }else{
+      $_SESSION['error'] =$conn->error.'Error.';
+      }
+
     }
 	}
 	header('location: generatepin.php');
