@@ -66,58 +66,58 @@
                             <div class="form-group row">
                                 <label for="amount" class="col-md-4 col-form-label text-md-right">Wallet Amount </label>
                                 <div class="col-md-6">
-                                <?php
+                                    <?php
                                     $member = $user['member_id'];
                                     $sql = "SELECT * FROM wallet WHERE member_id = '$member'";
                                     $query = $conn->query($sql);
                                     $row = $query->fetch_assoc();
-                                    $mon=$row['money'];
-                                ?>
-                                    <input type="text" id="amount" class="form-control" name="amount" value="<?php echo $mon;?>" readonly>
+                                    $mon = $row['money'];
+                                    ?>
+                                    <input type="text" id="amount" class="form-control" name="amount" value="<?php echo $mon; ?>" readonly>
                                 </div>
                             </div>
                             <hr>
                             <?php
-                                $member = $user['member_id'];
-                                $sql = "SELECT * FROM working_wallet WHERE member_id = '$member'";
-                                $query = $conn->query($sql);
-                                if ($query->num_rows > 0) {
-                                ?>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <th>S.No</th>
-                                    <th>Date</th>
-                                    <th>Credit</th>
-                                    <th>Debit</th>
-                                    <th>Narration</th>
-                                </thead>
-                                <?php
-                                $counter = 0;
-                                $member = $user['member_id'];
-                                $sql = "SELECT * FROM working_wallet WHERE member_id = '$member'";
-                                $query = $conn->query($sql);
-                                if ($query->num_rows > 0) {
-                                    while ($row = $query->fetch_assoc()) {
-                                ?>
-                                        <tr>
-                                            <td><?php echo ++$counter; ?></td>
-                                            <td><?php echo $row['date'] ?></td>
-                                            <td><?php echo $row['credit'] ?></td>
-                                            <td><?php echo $row['debit'] ?></td>
-                                            <td><?php echo $row['narration'] ?></td>
-                                        </tr>
-                                        </tbody>
-                                <?php
+                            $member = $user['member_id'];
+                            $sql = "SELECT * FROM working_wallet WHERE member_id = '$member'";
+                            $query = $conn->query($sql);
+                            if ($query->num_rows > 0) {
+                            ?>
+                                <table class="table table-bordered">
+                                    <thead style="background: linear-gradient(90deg, rgba(68,13,105,1) 0%, rgba(91,28,128,1) 6%, rgba(136,57,174,1) 32%, rgba(197,42,98,1) 62%, rgba(226,35,62,1) 91%, rgba(237,33,49,1) 100%, rgba(253,29,29,0.9500175070028011) 100%);color:white;">
+                                        <th>S.No</th>
+                                        <th>Date</th>
+                                        <th>Credit</th>
+                                        <th>Debit</th>
+                                        <th>Narration</th>
+                                    </thead>
+                                    <?php
+                                    $counter = 0;
+                                    $member = $user['member_id'];
+                                    $sql = "SELECT * FROM working_wallet WHERE member_id = '$member'";
+                                    $query = $conn->query($sql);
+                                    if ($query->num_rows > 0) {
+                                        while ($row = $query->fetch_assoc()) {
+                                    ?>
+                                            <tr>
+                                                <td><?php echo ++$counter; ?></td>
+                                                <td><?php echo $row['date'] ?></td>
+                                                <td><?php echo $row['credit'] ?></td>
+                                                <td><?php echo $row['debit'] ?></td>
+                                                <td><?php echo $row['narration'] ?></td>
+                                            </tr>
+                                            </tbody>
+                                    <?php
+                                        }
                                     }
-                                }
-                                ?>
-                                <tbody>
-                            </table>
+                                    ?>
+                                    <tbody>
+                                </table>
                             <?php
-                                } else {
-                                    echo "No Entries.";
-                                }
-                                ?>
+                            } else {
+                                echo "No Entries.";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

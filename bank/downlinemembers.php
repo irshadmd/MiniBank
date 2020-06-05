@@ -71,7 +71,7 @@
               <div class="table-responsive">
                 <br>
                 <table class="table table-bordered">
-                  <thead>
+                  <thead style="background: linear-gradient(90deg, rgba(68,13,105,1) 0%, rgba(91,28,128,1) 6%, rgba(136,57,174,1) 32%, rgba(197,42,98,1) 62%, rgba(226,35,62,1) 91%, rgba(237,33,49,1) 100%, rgba(253,29,29,0.9500175070028011) 100%);color:white;">
                     <th>Memberd Id</th>
                     <th>Member Name</th>
                     <th>Sponcer</th>

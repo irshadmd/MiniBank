@@ -38,7 +38,7 @@
   .senddonation {
     border: 1px solid black;
     border-radius: 10px;
-    background-color: blueviolet;
+    background-color: rgba(226, 35, 62, 1);
     padding: 1.5%;
     text-align: center;
   }
@@ -55,7 +55,8 @@
   .getdonation {
     border: 1px solid black;
     border-radius: 10px;
-    background-color: green;
+    background-color: rgba(11, 179, 19, 0.932);
+    ;
     padding: 1.5%;
     text-align: center;
   }
@@ -70,13 +71,16 @@
   }
 
   .senddonation ul li {
-    color: red;
+    color: whitesmoke;
     font-size: 20px;
   }
 
   .getdonation ul li {
-    color: red;
+    color: whitesmoke;
     font-size: 20px;
+  }
+  .inner p{
+    color: lightgrey;
   }
 </style>
 
@@ -125,7 +129,7 @@
         $query = $conn->query($sql);
         while ($row = $query->fetch_assoc()) {
           echo "
-            <div class='alert alert-info alert-dismissible'>
+            <div class='alert alert-info alert-dismissible' style='background:linear-gradient(90deg, rgba(68,13,105,1) 0%, rgba(91,28,128,1) 6%, rgba(136,57,174,1) 32%, rgba(197,42,98,1) 62%, rgba(226,35,62,1) 91%, rgba(237,33,49,1) 100%, rgba(253,29,29,0.9500175070028011) 100%);'>
               <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
               <h4><i class='icon fa fa-forward'></i>" . $row['title'] . "</h4>
               " . $row['message'] . "
@@ -133,7 +137,6 @@
           ";
         }
         ?>
-        <hr>
         <div class="row">
           <div class="col-md-6 col-sm-6 col-xs-6">
             <a href="mypins.php" class="btn btn-block btn-google"><i class="fa fa-users"></i> &nbsp Add Member</a>
@@ -145,7 +148,7 @@
         <hr>
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-xs-6">
+          <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-orange">
               <div class="inner">
@@ -155,7 +158,7 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
+          <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
@@ -163,18 +166,19 @@
                 $member = $user['member_id'];
                 $sql = "SELECT * FROM wallet WHERE member_id = '$member'";
                 $query = $conn->query($sql);
-                $row=$query->fetch_assoc();
+                $row = $query->fetch_assoc();
                 echo "<h3>" . $row['growth'] . "</h3>";
                 ?>
                 <p>GROWTH</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-arrow-graph-up-right"></i>
               </div>
+              <a href="growth.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
+          <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
@@ -187,13 +191,13 @@
                 <p>MY DIRECT</p>
               </div>
               <div class="icon">
-                <i class="ion ion-clock"></i>
+                <i class="ion ion-android-people"></i>
               </div>
               <a href="directmembers.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
+          <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
@@ -207,13 +211,13 @@
                 <p>DOWNLINE</p>
               </div>
               <div class="icon">
-                <i class="ion ion-alert-circled"></i>
+                <i class="ion ion-android-people"></i>
               </div>
               <a href="downlinemembers.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
+          <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-blue">
               <div class="inner">
@@ -227,15 +231,15 @@
                 <p>MY PINS</p>
               </div>
               <div class="icon">
-                <i class="ion ion-clock"></i>
+                <i class="ion ion-clipboard"></i>
               </div>
               <a href="mypins.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
+          <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
-            <div class="small-box bg-pink">
+            <div class="small-box bg-purple">
               <div class="inner">
                 <?php
                 $member = $user['member_id'];
@@ -248,9 +252,9 @@
                 <p>WALLET</p>
               </div>
               <div class="icon">
-                <i class="ion ion-clock"></i>
+                <i class="ion ion-cash"></i>
               </div>
-              <a href="wallet.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="workingwallet.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -342,7 +346,7 @@
           <div class="table-responsive mytable">
             <table class="table table-striped table-bordered">
               <caption>help Logs</caption>
-              <thead>
+              <thead style="background: linear-gradient(90deg, rgba(68,13,105,1) 0%, rgba(91,28,128,1) 6%, rgba(136,57,174,1) 32%, rgba(197,42,98,1) 62%, rgba(226,35,62,1) 91%, rgba(237,33,49,1) 100%, rgba(253,29,29,0.9500175070028011) 100%);color:white;">
                 <th>S.no</th>
                 <th>Amount</th>
                 <th>Date</th>

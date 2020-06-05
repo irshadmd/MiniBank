@@ -9,7 +9,6 @@ if (isset($_SESSION['members'])) {
 	.backhome {
 		margin: 2%;
 	}
-
 </style>
 
 <body class="hold-transition login-page">
@@ -21,10 +20,10 @@ if (isset($_SESSION['members'])) {
 				<h4>Login Here <i class="fa fa-forward"></i></h4>
 				<hr>
 			</div>
-			<div class="wrap-login100">
+			<div class="wrap-login100" style="background: linear-gradient(90deg, rgba(68,13,105,1) 0%, rgba(91,28,128,1) 6%, rgba(136,57,174,1) 32%, rgba(197,42,98,1) 62%, rgba(226,35,62,1) 91%, rgba(237,33,49,1) 100%, rgba(253,29,29,0.9500175070028011) 100%);">
 				<form class="login100-form validate-form" form action="login.php" method="POST">
 					<span class="login100-form-logo">
-						<i class="zmdi zmdi-account-add"></i>
+						<i class="ion ion-android-person" style="color: grey;"></i>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
