@@ -56,8 +56,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="employee.php"><i class="fa fa-circle-o"></i> Level Income</a></li>
-            <li><a href="overtime.php"><i class="fa fa-circle-o"></i> Daily Growth</a></li>
+            <li><a href="levelincome.php"><i class="fa fa-circle-o"></i> Level Income</a></li>
+            <li><a href="growth.php"><i class="fa fa-circle-o"></i> Daily Growth</a></li>
           </ul>
         </li>
         <li class="treeview">

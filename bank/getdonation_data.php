@@ -16,9 +16,10 @@ if (isset($_POST['getdonation'])) {
         $m_id=$row['get_id'];
         $amount=$row['amount'];
         $proid=$row['provide_id'];
+        $get_mem_id=$row['member_id'];
         $g_amont=$amount;
         
-        $sql = "INSERT INTO growth(member_id,provide_amount) VALUES('$m_id','$amount')";
+        $sql = "INSERT INTO growth(member_id,provided_to,provide_amount) VALUES('$m_id','$get_mem_id','$amount')";
         $conn->query($sql);
 
         $sql = "SELECT * FROM wallet WHERE member_id='$m_id'";
