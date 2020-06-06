@@ -28,7 +28,7 @@
 						VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount',NOW())";
 			$conn->query($sql);
 
-				$_SESSION['success'] = 'Member Added successfully';
+			$_SESSION['success'] = 'Member Added successfully' . '<br>' . 'Member Id:' . $memberid . '<br>' . 'Password:' . $password;
 			}
 		else{
 			$_SESSION['error'] = $conn->error;

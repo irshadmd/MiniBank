@@ -61,39 +61,39 @@ if (isset($_POST['getdonation'])) {
                 $row = $query->fetch_assoc();
                 $walletmoney = $row['money'];
 
-                if($level==1){
+                if($level==1 or $level==0){
                     //10% share
-                    $c_amount=$walletmoney*0.1;
+                    $c_amount=$amount*0.1;
                     $moneyupdated=$walletmoney+$c_amount;
                     $narration='Level income got by '.$memberid;
 
                     $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
                     $conn->query($sql);
 
-                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$memberid','$c_amount','$narration')";
+                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$val','$c_amount','$narration')";
                     $conn->query($sql);
 
                 }else if($level==2){
                     //5% share
-                    $c_amount = $walletmoney * 0.05;
+                    $c_amount = $amount * 0.05;
                     $moneyupdated = $walletmoney + $c_amount;
                     $narration = 'Level income got by ' . $memberid;
 
                     $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
                     $conn->query($sql);
 
-                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$memberid','$c_amount','$narration')";
+                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$val','$c_amount','$narration')";
                     $conn->query($sql);
                 }else{
                     //1% share
-                    $c_amount = $walletmoney * 0.01;
+                    $c_amount = $amount * 0.01;
                     $moneyupdated = $walletmoney + $c_amount;
                     $narration = 'Level income got by ' . $memberid;
 
                     $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
                     $conn->query($sql);
 
-                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$memberid','$c_amount','$narration')";
+                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$val','$c_amount','$narration')";
                     $conn->query($sql);
                 }
             }
