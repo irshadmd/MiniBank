@@ -18,7 +18,7 @@ if (isset($_POST['getdonation'])) {
         $proid=$row['provide_id'];
         $g_amont=$amount;
         
-        $sql = "INSERT INTO growth(member_id,provide_amount,growth_amount) VALUES('$m_id','$amount','$g_amont')";
+        $sql = "INSERT INTO growth(member_id,provide_amount) VALUES('$m_id','$amount')";
         $conn->query($sql);
 
         $sql = "SELECT * FROM wallet WHERE member_id='$m_id'";
@@ -44,7 +44,60 @@ if (isset($_POST['getdonation'])) {
         $row = $query->fetch_assoc();
         $sponcer_info = $row['sponcer_info'];
         $str = explode(",", $sponcer_info);
-        
+
+        foreach ($str as $val) {
+            if ($val == 'admin') {
+                // echo "this is admin";
+            } else {
+                // echo "this is not admin";
+                $sql="SELECT * FROM members WHERE member_id='$val'";
+                $query = $conn->query($sql);
+                $row = $query->fetch_assoc();
+                $level = $row['level'];
+
+                $sql = "SELECT * FROM wallet WHERE member_id='$val'";
+                $query = $conn->query($sql);
+                $row = $query->fetch_assoc();
+                $walletmoney = $row['money'];
+
+                if($level==1){
+                    //10% share
+                    $c_amount=$walletmoney*0.1;
+                    $moneyupdated=$walletmoney+$c_amount;
+                    $narration='Level income got by '.$memberid;
+
+                    $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
+                    $conn->query($sql);
+
+                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$memberid','$c_amount','$narration')";
+                    $conn->query($sql);
+
+                }else if($level==2){
+                    //5% share
+                    $c_amount = $walletmoney * 0.05;
+                    $moneyupdated = $walletmoney + $c_amount;
+                    $narration = 'Level income got by ' . $memberid;
+
+                    $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
+                    $conn->query($sql);
+
+                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$memberid','$c_amount','$narration')";
+                    $conn->query($sql);
+                }else{
+                    //1% share
+                    $c_amount = $walletmoney * 0.01;
+                    $moneyupdated = $walletmoney + $c_amount;
+                    $narration = 'Level income got by ' . $memberid;
+
+                    $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
+                    $conn->query($sql);
+
+                    $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$memberid','$c_amount','$narration')";
+                    $conn->query($sql);
+                }
+            }
+        }
+
         $_SESSION['success'] = 'Approved Successfully.';
     } else {
         $_SESSION['error'] = 'Error!!';
