@@ -48,8 +48,9 @@
 
 			$sponcer_name=$user['name'];
 			$sponcer_id=$user['member_id'];			
-			$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
-					VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount_p',NOW())";
+			$fir=1;
+			$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date,first) 
+					VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount_p',NOW(),'$fir')";
 			$conn->query($sql);
 
 			$_SESSION['success'] = 'Member Added successfully'.'<br>'.'Member Id:'.$memberid.'<br>'.'Password:'.$password;

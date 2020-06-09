@@ -79,8 +79,27 @@
     color: whitesmoke;
     font-size: 20px;
   }
-  .inner p{
+
+  .inner p {
     color: lightgrey;
+  }
+
+  .pro {
+    text-align: center;
+    padding: 1%;
+    margin: 1%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .procount{
+    border-right: 1px solid wheat;
+  }
+  .procount p {
+    color: white;
+  }
+  .protext {
+    background-color: green;
+    color: whitesmoke;
   }
 </style>
 
@@ -145,30 +164,79 @@
             <a href="providehelp.php" class="btn btn-block btn-facebook"><i class='icon fa fa-check'></i> &nbsp Help Again</a>
           </div>
         </div>
-        <hr>
-        <!-- Small boxes (Stat box) -->
+        <br>
         <div class="row">
-          
-          <div class="col-lg-3 col-sm-6 col-xs-12">
-            <!-- small box -->
-            <div class="small-box bg-green">
-              <div class="inner">
-                <?php
-                $member = $user['member_id'];
-                $sql = "SELECT * FROM wallet WHERE member_id = '$member'";
-                $query = $conn->query($sql);
-                $row = $query->fetch_assoc();
-                echo "<h3>" . $row['growth'] . "</h3>";
-                ?>
-                <p>GROWTH</p>
+          <div class="col-lg-6 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-sm-12 col-xs-12 small-box bg-purple pro">
+              <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-6 procount">
+                  <?php
+                  $member = $user['member_id'];
+                  $sql = "SELECT * FROM send_donation WHERE member_id = '$member' AND status='approved'";
+                  $query = $conn->query($sql);
+                  echo "<h3>" . $query->num_rows . "</h3>";
+                  ?>
+                  <p>COUNT</p>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6 procount">
+                  <?php
+                  $total = 0;
+                  $member = $user['member_id'];
+                  $sql = "SELECT * FROM send_donation WHERE member_id = '$member' AND status='approved'";
+                  $query = $conn->query($sql);
+                  while ($row = $query->fetch_assoc()) {
+                    $total = $total + $row['amount'];
+                  }
+                  echo "<h3>" . $total . "</h3>";
+                  ?>
+                  <p>AMOUNT</p>
+                </div>
               </div>
-              <div class="icon">
-                <i class="ion ion-arrow-graph-up-right"></i>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12 protext">
+                  <h2>PROVIDE</h2>
+                </div>
               </div>
-              <a href="growth.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
+
+          <div class="col-lg-6 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-sm-12 col-xs-12 small-box bg-purple pro">
+              <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-6 procount">
+                  <?php
+                  $member = $user['member_id'];
+                  $sql = "SELECT * FROM get_donation WHERE member_id = '$member' AND status='approved'";
+                  $query = $conn->query($sql);
+                  echo "<h3>" . $query->num_rows . "</h3>";
+                  ?>
+                  <p>COUNT</p>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6 procount">
+                  <?php
+                  $total = 0;
+                  $member = $user['member_id'];
+                  $sql = "SELECT * FROM get_donation WHERE member_id = '$member' AND status='approved'";
+                  $query = $conn->query($sql);
+                  while ($row = $query->fetch_assoc()) {
+                    $total = $total + $row['amount'];
+                  }
+                  echo "<h3>" . $total . "</h3>";
+                  ?>
+                  <p>AMOUNT</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12 protext">
+                  <h2>GET</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
           <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-yellow">
@@ -249,6 +317,26 @@
             </div>
           </div>
           <!-- ./col -->
+          <div class="col-lg-3 col-sm-6 col-xs-12">
+            <!-- small box -->
+            <div class="small-box bg-green">
+              <div class="inner">
+                <?php
+                $member = $user['member_id'];
+                $sql = "SELECT * FROM wallet WHERE member_id = '$member'";
+                $query = $conn->query($sql);
+                $row = $query->fetch_assoc();
+                echo "<h3>" . $row['growth'] . "</h3>";
+                ?>
+                <p>GROWTH</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-arrow-graph-up-right"></i>
+              </div>
+              <a href="growth.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
         </div>
         <!-- /.row -->
         <!-- Send Donation -->
@@ -326,7 +414,7 @@
         }
         ?>
         <hr>
-        <!-- provide help tables with timers -->
+        <!-- help logs tables with timers -->
         <?php
         $memberid = $user['member_id'];
         $sno = 1;
@@ -378,6 +466,101 @@
             </table>
           </div>
         <?php
+        }
+        ?>
+        <!-- First provide log in provide request -->
+        <?php
+        $memberid = $user['member_id'];
+        $fir = 1;
+        $sql = "SELECT * FROM provide_request WHERE member_id='$memberid' AND first='$fir' ORDER BY date LIMIT 1";
+        $query = $conn->query($sql);
+        if ($query->num_rows > 0) {
+        ?>
+          <div class="table-responsive mytable">
+            <table class="table table-striped table-bordered">
+              <caption>help Logs</caption>
+              <thead style="background: linear-gradient(90deg, rgba(68,13,105,1) 0%, rgba(91,28,128,1) 6%, rgba(136,57,174,1) 32%, rgba(197,42,98,1) 62%, rgba(226,35,62,1) 91%, rgba(237,33,49,1) 100%, rgba(253,29,29,0.9500175070028011) 100%);color:white;">
+                <th>S.no</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+              </thead>
+              <tbody>
+                <?php
+                $memberid = $user['member_id'];
+                $sno = 1;
+                $sql = "SELECT * FROM provide_request WHERE member_id='$memberid' AND first='$fir' ORDER BY date LIMIT 1";
+                $query = $conn->query($sql);
+                if ($query->num_rows > 0) {
+                  while ($row = $query->fetch_assoc()) {
+                ?>
+                    <tr>
+                      <td><?php echo $sno;
+                          $sno = $sno + 1; ?></td>
+                      <td><?php echo $row['amount']; ?></td>
+                      <td><?php $newdate = $row['date'];
+                          echo date("d-m-Y", strtotime($newdate)); ?></td>
+                      <td>Wait for admin to confirm</td>
+                    </tr>
+                <?php
+                  }
+                } else {
+                }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        <?php
+        }
+        ?>
+        <!-- First provide log -->
+        <?php
+        $memberid = $user['member_id'];
+        $fir = 1;
+        $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false' AND first='$fir' ORDER BY date LIMIT 1";
+        $query = $conn->query($sql);
+        if ($query->num_rows > 0) {
+          $row = $query->fetch_assoc();
+          $stat = $row['status'];
+          if ($stat == 'pendingGet') {
+          } else {
+        ?>
+            <div class="table-responsive mytable">
+              <table class="table table-striped table-bordered">
+                <caption>help Logs</caption>
+                <thead style="background: linear-gradient(90deg, rgba(68,13,105,1) 0%, rgba(91,28,128,1) 6%, rgba(136,57,174,1) 32%, rgba(197,42,98,1) 62%, rgba(226,35,62,1) 91%, rgba(237,33,49,1) 100%, rgba(253,29,29,0.9500175070028011) 100%);color:white;">
+                  <th>S.no</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </thead>
+                <tbody>
+                  <?php
+                  $memberid = $user['member_id'];
+                  $sno = 1;
+                  $sql = "SELECT * FROM provide_help WHERE member_id='$memberid' AND complete='false' AND first='$fir' ORDER BY date LIMIT 1";
+                  $query = $conn->query($sql);
+                  if ($query->num_rows > 0) {
+                    while ($row = $query->fetch_assoc()) {
+                  ?>
+                      <tr>
+                        <td><?php echo $sno;
+                            $sno = $sno + 1; ?></td>
+                        <td><?php echo $row['amount']; ?></td>
+                        <td><?php $newdate = $row['date'];
+                            echo date("d-m-Y", strtotime($newdate)); ?></td>
+                        <td><?php echo $row['status']; ?></td>
+                      </tr>
+                  <?php
+                    }
+                  } else {
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+        <?php
+          }
         }
         ?>
     </div>
