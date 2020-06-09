@@ -148,16 +148,7 @@
         <hr>
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-sm-6 col-xs-12">
-            <!-- small box -->
-            <div class="small-box bg-orange">
-              <div class="inner">
-                <h3>200</h3>
-                <p>JOINING</p>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
+          
           <div class="col-lg-3 col-sm-6 col-xs-12">
             <!-- small box -->
             <div class="small-box bg-green">

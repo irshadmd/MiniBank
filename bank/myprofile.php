@@ -90,10 +90,31 @@
                 <div class="form-group row">
                   <label for="gender" class="col-md-4 col-form-label text-md-right">Gender </label>
                   <div class="col-md-6">
-                    <input type="radio" id="male" name="gender" value="male">
-                    <span for="male">Male</span>
-                    <input type="radio" id="female" name="gender" value="female">
-                    <span for="female">Female</span>
+                    <?php
+                    $gen = $user['gender'];
+                    if ($gen == "male") {
+                    ?>
+                      <input type='radio' id='male' name='gender' value='male' checked>
+                      <span for="male">Male</span>
+                      <input type="radio" id="female" name="gender" value="female">
+                      <span for="female">Female</span>
+                    <?php
+                    } else if ($gen == "female") {
+                    ?>
+                      <input type='radio' id='male' name='gender' value='male'>
+                      <span for="male">Male</span>
+                      <input type="radio" id="female" name="gender" value="female" checked>
+                      <span for="female">Female</span>
+                    <?php
+                    } else {
+                    ?>
+                      <input type='radio' id='male' name='gender' value='male'>
+                      <span for="male">Male</span>
+                      <input type="radio" id="female" name="gender" value="female">
+                      <span for="female">Female</span>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
                 <div class="form-group row">
