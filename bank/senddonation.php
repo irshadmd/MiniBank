@@ -92,12 +92,6 @@
                                             <input type="number" class="form-control" id="amount" value="<?php echo $row['amount']; ?>" name="amount" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="trnid" class="col-md-4 col-form-label text-md-right">Transaction Id</label>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" id="trnid" name="trnid" required>
-                                        </div>
-                                    </div>
                                 <?php
                                 }
                                 ?>

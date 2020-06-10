@@ -10,6 +10,9 @@ if (isset($_POST['getdonation'])) {
         $sql = "UPDATE get_donation SET status = 'approved' WHERE id = '$senddonationid'";
         $conn->query($sql);
 
+        $sql = "UPDATE send_donation SET status = 'approved' WHERE id = '$senddonationid'";
+        $conn->query($sql);
+
         $sql="SELECT * FROM get_donation WHERE id='$senddonationid'";
         $query=$conn->query($sql);
         $row=$query->fetch_assoc();
@@ -19,8 +22,8 @@ if (isset($_POST['getdonation'])) {
         $get_mem_id=$row['member_id'];
         $g_amont=$amount;
         
-        $sql = "INSERT INTO growth(member_id,provided_to,provide_amount) VALUES('$m_id','$get_mem_id','$amount')";
-        $conn->query($sql);
+        // $sql = "INSERT INTO growth(member_id,provided_to,provide_amount) VALUES('$m_id','$get_mem_id','$amount')";
+        // $conn->query($sql);
 
         $sql = "SELECT * FROM wallet WHERE member_id='$m_id'";
         $query = $conn->query($sql);
@@ -28,8 +31,8 @@ if (isset($_POST['getdonation'])) {
         $grow_am = $row['growth'];
         $grow_am=$grow_am+$g_amont;
 
-        $sql = "UPDATE wallet SET growth ='$grow_am' WHERE member_id='$m_id'";
-        $conn->query($sql);
+        // $sql = "UPDATE wallet SET growth ='$grow_am' WHERE member_id='$m_id'";
+        // $conn->query($sql);
 
         $prevdate = date("Y-m-d H:i:s");
         $date = new DateTime($prevdate);

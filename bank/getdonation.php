@@ -97,18 +97,7 @@
                                 $query = $conn->query($sql);
                                 $row = $query->fetch_assoc();
                                 ?>
-                                <div class="form-group row">
-                                    <label for="trnid" class="col-md-4 col-form-label text-md-right">Transaction Id</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" id="trnid" value="<?php echo $row['trn_id']; ?>" name="trnid" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="trnid" class="col-md-4 col-form-label text-md-right">Transaction Date</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" id="trnid" value="<?php echo $row['trn_date']; ?>" name="trndate" readonly>
-                                    </div>
-                                </div>
+                                
                                 <div class="form-group row">
                                     <label for="status" class="col-md-4 col-form-label text-md-right">Status</label>
                                     <div class="col-md-6">

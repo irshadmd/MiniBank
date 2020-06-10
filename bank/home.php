@@ -56,7 +56,6 @@
     border: 1px solid black;
     border-radius: 10px;
     background-color: rgba(11, 179, 19, 0.932);
-    ;
     padding: 1.5%;
     text-align: center;
   }
@@ -91,14 +90,17 @@
     border-radius: 10px;
     overflow: hidden;
   }
-  .procount{
+
+  .procount {
     border-right: 1px solid wheat;
   }
+
   .procount p {
     color: white;
   }
+
   .protext {
-    background-color: green;
+    background: linear-gradient(90deg, rgba(68, 13, 105, 1) 0%, rgba(91, 28, 128, 1) 6%, rgba(136, 57, 174, 1) 32%, rgba(197, 42, 98, 1) 62%, rgba(226, 35, 62, 1) 91%, rgba(237, 33, 49, 1) 100%, rgba(253, 29, 29, 0.9500175070028011) 100%);
     color: whitesmoke;
   }
 </style>
@@ -365,7 +367,7 @@
                   </ul>
                   <h4><i class="fa fa-user"></i> <?php echo $row['name']; ?></h4>
                   <h4><i class="fa fa-money"></i> <?php echo $row['amount']; ?></h4>
-                  <h4><i class="fa fa-phone"></i> <?php echo $row['phoneno']; ?></h4>
+                  <h4><i class="fa fa-phone"></i> <a style="color: white;" href="tel:+91 <?php echo $row['phoneno']; ?>"><?php echo $row['phoneno']; ?></a></h4>
                   <a href="senddonation.php?id=<?php echo $row['id']; ?>" class="btn btn-block btn-primary"><i class="fa fa-send"></i> Send Donation</a>
                 </div>
               </div>
@@ -402,7 +404,7 @@
                   </ul>
                   <h4><i class="fa fa-user"></i> <?php echo $row['name']; ?></h4>
                   <h4><i class="fa fa-money"></i> <?php echo $row['amount']; ?></h4>
-                  <h4><i class="fa fa-phone"></i> <?php echo $row['phoneno']; ?></h4>
+                  <h4><i class="fa fa-phone"></i> <a style="color: white;" href="tel:+91 <?php echo $row['phoneno']; ?>"><?php echo $row['phoneno']; ?></a></h4>
                   <a href="getdonation.php?id=<?php echo $row['id']; ?>" class="btn btn-block btn-primary"><i class="fa fa-download"></i> Accept Donation</a>
                 </div>
               </div>
