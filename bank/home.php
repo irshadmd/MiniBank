@@ -17,11 +17,6 @@
     font-size: 17px;
   }
 
-  th {
-    background: black;
-    color: white;
-  }
-
   .count {
     list-style-type: none;
     text-align: center;
@@ -576,7 +571,7 @@
       $('[data-countdown]').each(function() {
         var $deadline = new Date($(this).data('countdown'));
         var $this = $(this);
-        console.log($deadline);
+        // console.log($deadline);
         var x = setInterval(function() {
           var now = new Date().getTime();
           var t = $deadline - now;
@@ -602,7 +597,7 @@
           $dataHours.html(hours);
           $dataMinuts.html(minuts);
           $dataSeconds.html(seconds);
-          console.log(hours + ':' + minuts + ':' + seconds)
+          // console.log(hours + ':' + minuts + ':' + seconds)
           if (t <= 0) {
             clearInterval(x);
             $dataHours.html('00');

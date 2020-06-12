@@ -42,10 +42,11 @@
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone no</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" id="phone" name="phone" required>
+              <input type="number" class="form-control" id="phone" name="phone" required onkeyup="check(); return false;">
+              <span id="message"></span>
             </div>
           </div>
-          <div class="form-group">
+          <div class=" form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
               <input type="password" class="form-control" id="password" name="password" required>
@@ -60,3 +61,27 @@
     </div>
   </div>
 </div>
+
+<script>
+  function check() {
+
+    var pass1 = document.getElementById('phone');
+
+
+    var message = document.getElementById('message');
+
+    var goodColor = "#0C6";
+    var badColor = "#FF9B37";
+
+    if (phone.value.length != 10) {
+
+      phone.style.backgroundColor = badColor;
+      message.style.color = badColor;
+      message.innerHTML = "required 10 digits, match requested format!";
+    } else {
+      phone.style.backgroundColor = goodColor;
+      message.style.color = goodColor;
+      message.innerHTML = "";
+    }
+  }
+</script>

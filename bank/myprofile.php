@@ -78,7 +78,7 @@
                 <div class="form-group row">
                   <label for="mobile" class="col-md-4 col-form-label text-md-right">Mobile </label>
                   <div class="col-md-6">
-                    <input type="text" id="mobile" class="form-control" name="mobile" value="<?php echo $user['mobile'] ?>">
+                    <input type="text" id="mobile" class="form-control" name="mobile" pattern="[1-9]{1}[0-9]{9}" value=" <?php echo $user['mobile'] ?>">
                   </div>
                 </div>
                 <div class="form-group row">

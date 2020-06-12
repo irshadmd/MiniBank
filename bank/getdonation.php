@@ -102,7 +102,7 @@
                                     <label for="status" class="col-md-4 col-form-label text-md-right">Status</label>
                                     <div class="col-md-6">
                                         <select name="status" id="status">
-                                            <option value="notapproved">Not Approved</option>
+                                            <option value="rejected">Not Approved</option>
                                             <option value="approved">Approved</option>
                                         </select>
                                     </div>

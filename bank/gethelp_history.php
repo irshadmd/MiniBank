@@ -65,7 +65,7 @@
                         <div class="mypins table-responsive">
                             <?php
                             $member = $user['member_id'];
-                            $sql = "SELECT * FROM get_donation WHERE member_id = '$member'";
+                            $sql = "SELECT * FROM get_donation WHERE member_id = '$member' AND status='approved'";
                             $query = $conn->query($sql);
                             if ($query->num_rows > 0) {
                             ?>
@@ -81,7 +81,7 @@
                                     <?php
                                     $counter = 0;
                                     $member = $user['member_id'];
-                                    $sql = "SELECT * FROM get_donation WHERE member_id = '$member'";
+                                    $sql = "SELECT * FROM get_donation WHERE member_id = '$member' AND status='approved'";
                                     $query = $conn->query($sql);
                                     if ($query->num_rows > 0) {
                                         while ($row = $query->fetch_assoc()) {

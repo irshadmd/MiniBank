@@ -77,6 +77,7 @@
                                         <th>Sponcer Id</th>
                                         <th>Sponcer Name</th>
                                         <th>Amount</th>
+                                        <th>Get Count</th>
                                         <th>Timer</th>
                                         <th>Date</th>
                                     </thead>
@@ -94,6 +95,7 @@
                                                 <td><?php echo $row['sponcer_id'] ?></td>
                                                 <td><?php echo $row['sponcer_name'] ?></td>
                                                 <td><?php echo $row['amount'] ?></td>
+                                                <td><?php echo $row['get_count'] ?></td>
                                                 <td>
                                                     <ul data-countdown="<?php echo $row['approved_datetime']; ?>" class="count">
                                                         <li data-hours="00" class="dot">00</li>
@@ -131,7 +133,7 @@
             $('[data-countdown]').each(function() {
                 var $deadline = new Date($(this).data('countdown'));
                 var $this = $(this);
-                console.log($deadline);
+                // console.log($deadline);
                 var x = setInterval(function() {
                     var now = new Date().getTime();
                     var t = $deadline - now;
@@ -157,7 +159,7 @@
                     $dataHours.html(hours);
                     $dataMinuts.html(minuts);
                     $dataSeconds.html(seconds);
-                    console.log(hours + ':' + minuts + ':' + seconds)
+                    // console.log(hours + ':' + minuts + ':' + seconds)
                     if (t <= 0) {
                         clearInterval(x);
                         $dataHours.html('00');

@@ -64,6 +64,7 @@
                                         <th>Sponcer Id</th>
                                         <th>Sponcer Name</th>
                                         <th>Amount</th>
+                                        <th>Get Count</th>
                                         <th>Date</th>
                                     </thead>
                                     <?php
@@ -80,10 +81,11 @@
                                                 <td><?php echo $row['sponcer_id'] ?></td>
                                                 <td><?php echo $row['sponcer_name'] ?></td>
                                                 <td><?php echo $row['amount'] ?></td>
+                                                <td><?php echo $row['get_count'] ?></td>
                                                 <td>
                                                     <?php $newdate = $row['date'];
                                                     echo date("d-m-Y", strtotime($newdate)); ?>
-                                                    <a href="sendlink_person.php?id=<?php echo $row['member_id']; ?>&pno=<?php echo $row['provide_help_no'];?>" class="btn btn-success my-2">Send Link</a>
+                                                    <a href="sendlink_person.php?id=<?php echo $row['member_id']; ?>&pno=<?php echo $row['provide_help_no']; ?>" class="btn btn-success my-2">Send Link</a>
                                                 </td>
                                             </tr>
                                             </tbody>
