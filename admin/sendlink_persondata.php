@@ -45,8 +45,8 @@
                 $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
                     VALUES('$sendmember','$id','$sendname','$sendphoneno','$amount',NOW())";
                 $conn->query($sql);
-                $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,date) 
-                    VALUES('$id','$sendmember','$getname','$getphoneno','$amount','$proid',NOW())";
+                $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,get_help_no,date) 
+                    VALUES('$id','$sendmember','$getname','$getphoneno','$amount','$proid','$provideno',NOW())";
                 $conn->query($sql);
 
                 $sql = "UPDATE provide_help SET status='Sent' WHERE id = '$proid'";
@@ -63,8 +63,8 @@
                 $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
                         VALUES('$sendmember','$id','$sendname','$sendphoneno','$amount',NOW())";
                 $conn->query($sql);
-                $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,date) 
-                        VALUES('$id','$sendmember','$getname','$getphoneno','$amount','$proid',NOW())";
+                $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,get_help_no,date) 
+                        VALUES('$id','$sendmember','$getname','$getphoneno','$amount','$proid','$provideno',NOW())";
                 $conn->query($sql);
 
                 $sql = "UPDATE provide_help SET status='Sent' WHERE id = '$proid'";

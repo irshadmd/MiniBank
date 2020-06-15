@@ -13,17 +13,17 @@ if (isset($_POST['getdonation'])) {
         $sql = "UPDATE send_donation SET status = '$status' WHERE id = '$senddonationid'";
         $conn->query($sql);
 
-        if($status=='approved'){
+        $sql = "SELECT * FROM get_donation WHERE id='$senddonationid'";
+        $query = $conn->query($sql);
+        $row = $query->fetch_assoc();
+        $m_id = $row['get_id'];
+        $amount = $row['amount'];
+        $proid = $row['provide_id'];
+        $get_mem_id = $row['member_id'];
+        $provideno=$row['get_help_no'];
+        $g_amont = $amount;
 
-            $sql="SELECT * FROM get_donation WHERE id='$senddonationid'";
-            $query=$conn->query($sql);
-            $row=$query->fetch_assoc();
-            $m_id=$row['get_id'];
-            $amount=$row['amount'];
-            $proid=$row['provide_id'];
-            $get_mem_id=$row['member_id'];
-            $g_amont=$amount;
-            
+        if($status=='approved'){
             // $sql = "INSERT INTO growth(member_id,provided_to,provide_amount) VALUES('$m_id','$get_mem_id','$amount')";
             // $conn->query($sql);
     
@@ -103,6 +103,17 @@ if (isset($_POST['getdonation'])) {
                     }
                 }
             }
+        }else{
+            //increasing getcount if get donation is rejected
+            $get_count = 0;
+            $sql = "SELECT * FROM provide_help WHERE provide_help_no='$provideno'";
+            $query = $conn->query($sql);
+            while ($row = $query->fetch_assoc()) {
+                $get_count = $row['get_count'];
+            }
+            $get_count=$get_count+1;
+            $sql = "UPDATE provide_help SET complete = 'false',status='approved',get_count='$get_count' WHERE provide_help_no = '$provideno'";
+            $conn->query($sql);
         }
 
         $_SESSION['success'] = $status.' Successfully.';

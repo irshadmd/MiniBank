@@ -21,12 +21,13 @@ include 'includes/session.php';
         $send_phone = $row['send_phone'];
         $provide_id = $row['provide_id'];
         $amount = $row['amount'];
+        $provideno = $row['get_help_no'];
     
         $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
                     VALUES('$send_id','$get_id','$get_name','$get_phone','$amount',NOW())";
         $conn->query($sql);
-        $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,date) 
-                    VALUES('$get_id','$send_id','$send_name','$send_phone','$amount','$provide_id',NOW())";
+        $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,get_help_no,date) 
+                    VALUES('$get_id','$send_id','$send_name','$send_phone','$amount','$provide_id','$provideno',NOW())";
         $conn->query($sql);
     }
     $sql = "TRUNCATE TABLE saved";

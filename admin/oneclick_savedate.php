@@ -43,8 +43,8 @@ if (isset($_POST['save'])) {
         $get_count=$get_count-1;
         $sql = "UPDATE provide_help SET get_count = '$get_count' WHERE provide_help_no = '$provideno'";
         if ($conn->query($sql)) {
-            $sql = "INSERT INTO saved (get_id,get_name,get_phone,send_id,send_name,send_phone,provide_id,amount) 
-                VALUES('$id','$sendname','$sendphoneno','$sendmember','$getname','$getphoneno','$proid','$amount')";
+            $sql = "INSERT INTO saved (get_id,get_name,get_phone,send_id,send_name,send_phone,provide_id,get_help_no,amount) 
+                VALUES('$id','$sendname','$sendphoneno','$sendmember','$getname','$getphoneno','$proid','$provideno','$amount')";
             $conn->query($sql);
 
             $sql = "UPDATE provide_help SET status='Sent' WHERE id = '$proid'";
@@ -59,8 +59,8 @@ if (isset($_POST['save'])) {
         $get_count = $get_count - 1;
         $sql = "UPDATE provide_help SET complete = 'true',status='approved',get_count='$get_count' WHERE provide_help_no = '$provideno'";
         if ($conn->query($sql)) {
-            $sql = "INSERT INTO saved (get_id,get_name,get_phone,send_id,send_name,send_phone,provide_id,amount) 
-                VALUES('$id','$sendname','$sendphoneno','$sendmember','$getname','$getphoneno','$proid','$amount')";
+            $sql = "INSERT INTO saved (get_id,get_name,get_phone,send_id,send_name,send_phone,provide_id,get_help_no,amount) 
+                VALUES('$id','$sendname','$sendphoneno','$sendmember','$getname','$getphoneno','$proid','$provideno','$amount')";
             $conn->query($sql);
 
             $sql = "UPDATE provide_help SET status='Sent' WHERE id = '$proid'";

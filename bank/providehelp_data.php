@@ -11,24 +11,30 @@
 
         $sponcer_name="";
         $sponcer_id=$user['sponcer'];
-        if($sponcer_id=='admin'){
-            $sponcer_name='admin';
+
+        $sql="SELECT * FROM pins WHERE member_id='$memberid' AND pin='$selectedPin'";
+        $query=$conn->query($sql);
+        if ($query->num_rows > 0) {
+            if ($sponcer_id == 'admin') {
+                $sponcer_name = 'admin';
+            } else {
+                $sql = "SELECT * FROM members WHERE member_id='$sponcer_id'";
+                $query = $conn->query($sql);
+                $row = $query->fetch_assoc();
+                $sponcer_name = $row['name'];
+            }
+
+            $sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
+                        VALUES('$memberid','$membername','$randno','$sponcer_name','$sponcer_id','$amount',NOW())";
+            $conn->query($sql);
+
+            $sql = "DELETE FROM pins WHERE pin = '$selectedPin'";
+            $conn->query($sql);
+
+            $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';    
         }else{
-            $sql="SELECT * FROM members WHERE member_id='$sponcer_id'";
-            $query=$conn->query($sql);
-            $row=$query->fetch_assoc();
-            $sponcer_name=$row['name'];
+            $_SESSION['error'] = 'Pin not Found.';
         }
-
-        $sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
-					VALUES('$memberid','$membername','$randno','$sponcer_name','$sponcer_id','$amount',NOW())";
-        $conn->query($sql);
-
-        $sql="DELETE FROM pins WHERE pin = '$selectedPin'";
-        $conn->query($sql);
-
-        $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';
-        
 	}
 	header('location: providehelp.php');
 ?>
