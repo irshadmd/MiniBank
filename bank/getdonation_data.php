@@ -41,7 +41,7 @@ if (isset($_POST['getdonation'])) {
             $date->add(new DateInterval('P4DT4H'));
             $date = $date->format('Y-m-d H:i:s');
     
-            $sql="UPDATE provide_help SET status='pendingGet',approved_datetime = '$date' WHERE id='$proid'";
+            $sql="UPDATE provide_help SET status = 'pendingGet' , approved_datetime = '$date' WHERE id='$proid'";
             $conn->query($sql);
             
             $memberid=$user['member_id'];
@@ -105,6 +105,10 @@ if (isset($_POST['getdonation'])) {
             }
         }else{
             //increasing getcount if get donation is rejected
+
+            $sql = "UPDATE provide_help SET status = 'Donation Rejected' WHERE id='$proid'";
+            $conn->query($sql);
+
             $get_count = 0;
             $sql = "SELECT * FROM provide_help WHERE provide_help_no='$provideno'";
             $query = $conn->query($sql);
@@ -112,7 +116,7 @@ if (isset($_POST['getdonation'])) {
                 $get_count = $row['get_count'];
             }
             $get_count=$get_count+1;
-            $sql = "UPDATE provide_help SET complete = 'false',status='approved',get_count='$get_count' WHERE provide_help_no = '$provideno'";
+            $sql = "UPDATE provide_help SET complete = 'false' , status = 'approved' , get_count = '$get_count' WHERE provide_help_no = '$provideno'";
             $conn->query($sql);
         }
 
