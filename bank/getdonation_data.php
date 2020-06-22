@@ -44,7 +44,8 @@ if (isset($_POST['getdonation'])) {
             $sql="UPDATE provide_help SET status = 'pendingGet' , approved_datetime = '$date' WHERE id='$proid'";
             $conn->query($sql);
             
-            $memberid=$user['member_id'];
+            //$memberid=$user['member_id'];
+            $memberid = $m_id;
             $sql = "SELECT * FROM members WHERE member_id='$memberid'";
             $query = $conn->query($sql);
             $row = $query->fetch_assoc();
