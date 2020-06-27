@@ -80,7 +80,7 @@
                                                 <td><?php echo $row['name'] ?></td>
                                                 <td><?php echo $row['sponcer_id'] ?></td>
                                                 <td><?php echo $row['sponcer_name'] ?></td>
-                                                <td><?php echo $row['amount'] ?></td>
+                                                <td>200</td>
                                                 <td><?php echo $row['get_count'] ?></td>
                                                 <td>
                                                     <?php $newdate = $row['date'];

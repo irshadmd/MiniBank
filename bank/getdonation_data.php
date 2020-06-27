@@ -23,6 +23,13 @@ if (isset($_POST['getdonation'])) {
         $provideno=$row['get_help_no'];
         $g_amont = $amount;
 
+        $provide_count=0;
+        $sql = "SELECT * FROM provide_help WHERE id = '$proid'";
+        $query = $conn->query($sql);
+        while ($row = $query->fetch_assoc()) {
+            $provide_count = $row['provide_count'];
+        }
+
         if($status=='approved'){
             // $sql = "INSERT INTO growth(member_id,provided_to,provide_amount) VALUES('$m_id','$get_mem_id','$amount')";
             // $conn->query($sql);
@@ -40,9 +47,11 @@ if (isset($_POST['getdonation'])) {
             $date = new DateTime($prevdate);
             $date->add(new DateInterval('P4DT4H'));
             $date = $date->format('Y-m-d H:i:s');
-    
-            $sql="UPDATE provide_help SET status = 'pendingGet' , approved_datetime = '$date' WHERE id='$proid'";
-            $conn->query($sql);
+            
+            if($provide_count==0){
+                $sql="UPDATE provide_help SET status = 'pendingGet' , approved_datetime = '$date' WHERE id='$proid'";
+                $conn->query($sql);
+            }
             
             //$memberid=$user['member_id'];
             $memberid = $m_id;
@@ -106,9 +115,10 @@ if (isset($_POST['getdonation'])) {
             }
         }else{
             //increasing getcount if get donation is rejected
-
-            $sql = "UPDATE provide_help SET status = 'Donation Rejected' WHERE id='$proid'";
-            $conn->query($sql);
+            if($provide_count==0){
+                $sql = "UPDATE provide_help SET status = 'Donation Rejected' WHERE id='$proid'";
+                $conn->query($sql);
+            }
 
             $get_count = 0;
             $sql = "SELECT * FROM provide_help WHERE provide_help_no='$provideno'";

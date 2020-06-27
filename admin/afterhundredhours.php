@@ -46,3 +46,4 @@ while ($row = $query->fetch_assoc()) {
     $conn->query($sql);
   }
 }
+?>

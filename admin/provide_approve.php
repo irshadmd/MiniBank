@@ -34,9 +34,10 @@
 // else{
 // 	$_SESSION['error'] = $conn->error;
 // }
-
-	$sql = "INSERT INTO provide_help(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date,first) 
-						VALUES('$memberid','$name','$helpno','$sponcer_name','$sponcer_id','$amount','$date','$fir')";
+	$provide_count=$amount/200;
+	$get_count=$provide_count*2;
+	$sql = "INSERT INTO provide_help(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date,first,provide_count,get_count) 
+						VALUES('$memberid','$name','$helpno','$sponcer_name','$sponcer_id','$amount','$date','$fir','$provide_count','$get_count')";
 	if($conn->query($sql)){
 		$sql = "DELETE FROM provide_request WHERE provide_help_no = '$helpno'";
 		$conn->query($sql);
