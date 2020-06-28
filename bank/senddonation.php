@@ -15,6 +15,10 @@
     input {
         border: 1px solid black;
     }
+
+    .getdonationbt{
+        text-align: right;
+    }
 </style>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -62,7 +66,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="myprofile">
-                            <form method="POST" action="senddonation_data.php?id=<?php echo $_GET['id']; ?>" >
+                            <form method="POST" action="senddonation_data.php?id=<?php echo $_GET['id']; ?>">
                                 <?php $id = $_GET['id'];
                                 $sql = "SELECT * FROM send_donation WHERE id='$id'";
                                 $query = $conn->query($sql);
@@ -95,7 +99,9 @@
                                 <?php
                                 }
                                 ?>
-                                <button type="submit" class="btn btn-success btn-flat" name="senddonation"><i class="fa fa-check-square-o"></i> Send Donation</button>
+                                <div class='getdonationbt'>
+                                    <button type="submit" class="btn btn-success btn-flat" name="senddonation"><i class="fa fa-check-square-o"></i> Send Donation</button>
+                                </div>
                             </form>
                         </div>
                     </div>

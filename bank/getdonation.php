@@ -15,6 +15,10 @@
     input {
         border: 1px solid black;
     }
+
+    .getdonationbt{
+        text-align: right;
+    }
 </style>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -97,7 +101,7 @@
                                 $query = $conn->query($sql);
                                 $row = $query->fetch_assoc();
                                 ?>
-                                
+
                                 <div class="form-group row">
                                     <label for="status" class="col-md-4 col-form-label text-md-right">Status</label>
                                     <div class="col-md-6">
@@ -107,7 +111,9 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-flat" name="getdonation"><i class="fa fa-check-square-o"></i> Approve Reciept</button>
+                                <div class='getdonationbt'>
+                                    <button type="submit" class="btn btn-success btn-flat" name="getdonation"><i class="fa fa-check-square-o"></i> Approve Reciept</button>
+                                </div>
                             </form>
                         </div>
                     </div>

@@ -19,10 +19,11 @@
       $newamount=$money-$totalcost;
       $sql = "UPDATE wallet SET money = '$newamount' WHERE member_id = '$memberid'";
       $query = $conn->query($sql);
+
       for ($i = 0; $i <$noofpins; $i++){
         $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $pin=substr(str_shuffle($str_result),0,8);
-        $sql="INSERT INTO pins(member_id,pin) VALUES('$memberid','$pin')";
+        $sql="INSERT INTO pins(member_id,pin,amount) VALUES('$memberid','$pin',200)";
         $query = $conn->query($sql);
       }
 
