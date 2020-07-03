@@ -2,13 +2,13 @@
 $datenow = date("Y-m-d H:i:s");
 $sql = "SELECT * FROM provide_help ";
 $query = $conn->query($sql);
-while ($row = $query->fetch_assoc()) {
-  $id = $row['id'];
-  $status = $row['status'];
-  $memberid = $row['member_id'];
-  $amount = $row['amount'];
-  $approvedate = $row['approved_datetime'];
-  $bool = $row['growth'];
+while ($result = $query->fetch_assoc()) {
+  $id = $result['id'];
+  $status = $result['status'];
+  $memberid = $result['member_id'];
+  $amount = $result['amount'];
+  $approvedate = $result['approved_datetime'];
+  $bool = $result['growth'];
 
   if (($datenow > $approvedate) and ($status == 'pendingGet')) {
     $sql = "UPDATE provide_help SET status = 'approved' , growth = 'true' WHERE id = '$id'";
