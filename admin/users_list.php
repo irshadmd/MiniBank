@@ -75,6 +75,7 @@
                                         <th>Member Name</th>
                                         <th>Sponcer Id</th>
                                         <th>Phone no</th>
+                                        <th>Password</th>
                                         <th>Registration Date</th>
                                     </thead>
                                     <?php
@@ -90,6 +91,7 @@
                                                 <td><?php echo $row['name'] ?></td>
                                                 <td><?php echo $row['sponcer'] ?></td>
                                                 <td><?php echo $row['mobile'] ?></td>
+                                                <td><?php echo $row['password'] ?></td>
                                                 <td>
                                                     <?php echo $row['joining_date'] ?>
                                                     &nbsp;
