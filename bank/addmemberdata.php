@@ -65,7 +65,7 @@
 			// Data for text message. This is the text message data.
 			$sender = "TXTLCL"; // This is who the message appears to be from.
 			$numbers = $newphone; // A single number or a comma-seperated list of numbers
-			$message = "This is a test message from the PHP API script.";
+			$message = "Dear ".$name." ,         "."Welcome to Minibank.             "."Member Id: ".$memberid."    Password: ".$password. "     Thanks:) https://minibank.tech/";
 			// 612 chars or less
 			// A single number or a comma-seperated list of numbers
 			$message = urlencode($message);
