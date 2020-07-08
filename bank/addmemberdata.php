@@ -11,6 +11,8 @@
 		$password = $_POST['password'];
 		$level=0;
 		$money=0;
+		$date = date('Y-m-d');
+		$datetime = date('Y-m-d H:i:s');
 
 		$sql="SELECT * FROM members WHERE member_id='$sponcer'";
 		$query = $conn->query($sql);
@@ -21,10 +23,10 @@
 		$sponcerinfo=$sponcerinfo.','.$sponcer;
 
     	$sql = "INSERT INTO members (member_id, name,mobile, password, sponcer,joining_date,level,sponcer_info)
-      		VALUES ('$memberid', '$name', '$phone','$password','$sponcer', NOW(),'$level','$sponcerinfo')";
+      		VALUES ('$memberid', '$name', '$phone','$password','$sponcer', '$date','$level','$sponcerinfo')";
 		if($conn->query($sql)){
 			$sql="INSERT INTO usedpins(member_id,pin,amount,register,date)
-			 VALUES('$sponcer','$pin','$amount','$memberid',NOW())";
+			 VALUES('$sponcer','$pin','$amount','$memberid','$date'";
 			$query = $conn->query($sql);
 
 			$sql="INSERT INTO wallet(member_id,money)
@@ -37,7 +39,7 @@
 			$sql="SELECT * FROM transfer_pin WHERE pin='$pin'";
 			$query = $conn->query($sql);
 			if($query->num_rows > 0){
-				$sql = "UPDATE transfer_pin SET used_id = '$memberid', used_name='$name', used_date=NOW() WHERE pin = '$pin'";
+				$sql = "UPDATE transfer_pin SET used_id = '$memberid', used_name='$name', used_date='$date' WHERE pin = '$pin'";
             	$conn->query($sql);
 			}
 
@@ -50,7 +52,7 @@
 			$sponcer_id=$user['member_id'];			
 			$fir=1;
 			$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date,first) 
-					VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount_p',NOW(),'$fir')";
+					VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount_p','$datetime','$fir')";
 			$conn->query($sql);
 
 
@@ -65,7 +67,7 @@
 			// Data for text message. This is the text message data.
 			$sender = "TXTLCL"; // This is who the message appears to be from.
 			$numbers = $newphone; // A single number or a comma-seperated list of numbers
-			$message = "Dear ".$name." ,         "."Welcome to Minibank.             "."Member Id: ".$memberid."    Password: ".$password. "     Thanks:) https://minibank.tech/";
+			$message = "Dear " . $name . " ,\n" . "Welcome to Minibank.\n" . "Member Id: " . $memberid . "\nPassword: " . $password . " \nThanks:) https://minibank.tech/";
 			// 612 chars or less
 			// A single number or a comma-seperated list of numbers
 			$message = urlencode($message);

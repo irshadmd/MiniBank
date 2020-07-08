@@ -12,6 +12,8 @@
         $sponcer_name="";
         $sponcer_id=$user['sponcer'];
 
+        $date = date('Y-m-d H:i:s');
+
         $sql="SELECT * FROM pins WHERE member_id='$memberid' AND pin='$selectedPin'";
         $query=$conn->query($sql);
         if ($query->num_rows > 0) {
@@ -25,7 +27,7 @@
             }
 
             $sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
-                        VALUES('$memberid','$membername','$randno','$sponcer_name','$sponcer_id','$amount',NOW())";
+                        VALUES('$memberid','$membername','$randno','$sponcer_name','$sponcer_id','$amount','$date'";
             $conn->query($sql);
 
             $sql = "DELETE FROM pins WHERE pin = '$selectedPin'";

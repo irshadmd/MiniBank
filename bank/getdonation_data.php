@@ -4,6 +4,7 @@ include 'includes/session.php';
 if (isset($_POST['getdonation'])) {
     $senddonationid = $_GET['id'];
     $status = $_POST['status'];
+    $datetime = date('Y-m-d H:i:s');
 
     $sql = "UPDATE donation_reciept SET status = '$status' WHERE send_donation_id = '$senddonationid'";
     if ($conn->query($sql)) {
@@ -85,7 +86,7 @@ if (isset($_POST['getdonation'])) {
                         $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
                         $conn->query($sql);
     
-                        $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$val','$c_amount','$narration')";
+                        $sql = "INSERT INTO working_wallet(member_id,credit,narration,date) VALUES('$val','$c_amount','$narration','$datetime')";
                         $conn->query($sql);
     
                     }else if($level==2){
@@ -97,7 +98,7 @@ if (isset($_POST['getdonation'])) {
                         $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
                         $conn->query($sql);
     
-                        $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$val','$c_amount','$narration')";
+                        $sql = "INSERT INTO working_wallet(member_id,credit,narration,date) VALUES('$val','$c_amount','$narration','$datetime')";
                         $conn->query($sql);
                     }else{
                         //1% share
@@ -108,7 +109,7 @@ if (isset($_POST['getdonation'])) {
                         $sql = "UPDATE wallet SET money='$moneyupdated' WHERE member_id='$val'";
                         $conn->query($sql);
     
-                        $sql = "INSERT INTO working_wallet(member_id,credit,narration) VALUES('$val','$c_amount','$narration')";
+                        $sql = "INSERT INTO working_wallet(member_id,credit,narration,date) VALUES('$val','$c_amount','$narration','$datetime')";
                         $conn->query($sql);
                     }
                 }

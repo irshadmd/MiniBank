@@ -8,9 +8,10 @@
     	$phone=$_POST['phone'];
 		$password = $_POST['password'];
 		$money=0;
-
+		$date = date('Y-m-d');
+		$datetime = date('Y-m-d H:i:s');
 	    $sql = "INSERT INTO members (member_id, name,mobile, password, sponcer,joining_date,level,sponcer_info)
-    	  VALUES ('$memberid', '$name', '$phone','$password','$sponcer', NOW(),0,'admin')";
+    	  VALUES ('$memberid', '$name', '$phone','$password','$sponcer','$date',0,'admin')";
 		if($conn->query($sql)){
 
 			$sql="INSERT INTO wallet(member_id,money)
@@ -26,7 +27,7 @@
 			$sponcer_id = $sponcer;
 			$fir=1;
 			$sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date,first) 
-						VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount',NOW(),'$fir')";
+						VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount','$datetime','$fir')";
 			$conn->query($sql);
 
 			$newphone='91'.$phone;
@@ -40,7 +41,7 @@
 			// Data for text message. This is the text message data.
 			$sender = "TXTLCL"; // This is who the message appears to be from.
 			$numbers = $newphone; // A single number or a comma-seperated list of numbers
-			$message = "Dear " . $name . " ,         " . "Welcome to Minibank.             " . "Member Id: " . $memberid . "    Password: " . $password . "     Thanks:) https://minibank.tech/";
+			$message = "Dear " . $name . " ,\n" . "Welcome to Minibank.\n" . "Member Id: " . $memberid . "\nPassword: " . $password . " \nThanks:) https://minibank.tech/";
 			// 612 chars or less
 			// A single number or a comma-seperated list of numbers
 			$message = urlencode($message);

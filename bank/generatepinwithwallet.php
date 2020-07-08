@@ -6,6 +6,7 @@
 		$totalcost = $noofpins*100;
     $money=0;
     $narration="Pin Generated";
+    $date = date('Y-m-d H:i:s');
     $sql="SELECT * From wallet where member_id='$memberid'";
     $query = $conn->query($sql);
 		if($query->num_rows < 1){
@@ -27,7 +28,7 @@
         $query = $conn->query($sql);
       }
 
-      $sql = "INSERT INTO working_wallet(member_id,debit,narration) VALUES('$memberid','$totalcost','$narration')";
+      $sql = "INSERT INTO working_wallet(member_id,debit,narration,date) VALUES('$memberid','$totalcost','$narration','$date')";
       if($conn->query($sql)){
         $_SESSION['success'] = 'Pin Generated successfully';
       }else{

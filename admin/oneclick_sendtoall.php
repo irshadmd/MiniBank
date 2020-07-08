@@ -8,7 +8,9 @@ include 'includes/session.php';
     $send_name="";
     $send_phone="";
     $provide_id="";
-    $amount=0;    
+    $amount=0;
+
+    $date = date('Y-m-d H:i:s');
 
     $sql = "SELECT * FROM saved";
     $query = $conn->query($sql);
@@ -24,10 +26,10 @@ include 'includes/session.php';
         $provideno = $row['get_help_no'];
     
         $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
-                    VALUES('$send_id','$get_id','$get_name','$get_phone','$amount',NOW())";
+                    VALUES('$send_id','$get_id','$get_name','$get_phone','$amount','$date')";
         $conn->query($sql);
         $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,get_help_no,date) 
-                    VALUES('$get_id','$send_id','$send_name','$send_phone','$amount','$provide_id','$provideno',NOW())";
+                    VALUES('$get_id','$send_id','$send_name','$send_phone','$amount','$provide_id','$provideno','$date')";
         $conn->query($sql);
     }
     $sql = "TRUNCATE TABLE saved";

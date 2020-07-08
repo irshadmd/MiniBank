@@ -16,7 +16,7 @@
 
         $g_amont = $amount*2;
 
-        $sql = "INSERT INTO growth(member_id,provide_amount,growth_amount) VALUES('$memberid','$amount','$g_amont')";
+        $sql = "INSERT INTO growth(member_id,provide_amount,growth_amount,date) VALUES('$memberid','$amount','$g_amont','$datenow')";
         $conn->query($sql);
 
         $sql = "SELECT * FROM wallet WHERE member_id='$memberid'";
@@ -34,7 +34,7 @@
 
         $g_amont = $amount * 2;
 
-        $sql = "INSERT INTO growth(member_id,provide_amount,growth_amount) VALUES('$memberid','$amount','$g_amont')";
+        $sql = "INSERT INTO growth(member_id,provide_amount,growth_amount,date) VALUES('$memberid','$amount','$g_amont','$datenow')";
         $conn->query($sql);
 
         $sql = "SELECT * FROM wallet WHERE member_id = '$memberid'";

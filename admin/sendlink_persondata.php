@@ -21,6 +21,8 @@
         $provide_count=0;
         $sendamount = 200;
 
+        $date = date('Y-m-d H:i:s');
+
         $sql = "SELECT * FROM provide_help WHERE id = '$proid'";
         $query = $conn->query($sql);
         while ($row = $query->fetch_assoc()) {
@@ -52,10 +54,10 @@
             $sql = "UPDATE provide_help SET complete = 'true',status='approved',get_count='$get_count' WHERE provide_help_no = '$provideno'";
             if ($conn->query($sql)) {
                 $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
-                            VALUES('$sendmember','$id','$sendname','$sendphoneno','$sendamount',NOW())";
+                            VALUES('$sendmember','$id','$sendname','$sendphoneno','$sendamount','$date'";
                 $conn->query($sql);
                 $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,get_help_no,date) 
-                            VALUES('$id','$sendmember','$getname','$getphoneno','$sendamount','$proid','$provideno',NOW())";
+                            VALUES('$id','$sendmember','$getname','$getphoneno','$sendamount','$proid','$provideno','$date')";
                 $conn->query($sql);
 
                 if ($provide_count == 1) {
@@ -77,10 +79,10 @@
             $sql = "UPDATE provide_help SET get_count = '$get_count' WHERE provide_help_no = '$provideno'";
             if ($conn->query($sql)) {
                 $sql = "INSERT INTO send_donation (member_id,send_id,name,phoneno,amount,date) 
-                        VALUES('$sendmember','$id','$sendname','$sendphoneno','$sendamount',NOW())";
+                        VALUES('$sendmember','$id','$sendname','$sendphoneno','$sendamount','$date'";
                 $conn->query($sql);
                 $sql = "INSERT INTO get_donation (member_id,get_id,name,phoneno,amount,provide_id,get_help_no,date) 
-                        VALUES('$id','$sendmember','$getname','$getphoneno','$sendamount','$proid','$provideno',NOW())";
+                        VALUES('$id','$sendmember','$getname','$getphoneno','$sendamount','$proid','$provideno','$date')";
                 $conn->query($sql);
 
                 if ($provide_count == 1) {
