@@ -1,5 +1,6 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
+<?php include 'includes/sendsms.php'; ?>
 <?php include 'includes/afterhundredhours.php'; ?>
 
 <body class="hold-transition skin-yellow sidebar-mini">

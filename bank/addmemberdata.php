@@ -79,6 +79,15 @@
 			$result = curl_exec($ch); // This is the result from the API
 			curl_close($ch);
 
+			$timenow = date("H:i:s");
+			$nineam = "09:01:00";
+			$ninepm = "20:59:00";
+			if (($timenow > $ninepm) or ($timenow < $nineam)) {
+				$sql = "INSERT INTO sms(name,member_id,phone,password) 
+								VALUES('$name','$memberid','$phone','$password')";
+				$conn->query($sql);
+			}
+
 			$_SESSION['success'] = 'Member Added successfully'.'<br>'.'Member Id:'.$memberid.'<br>'.'Password:'.$password;
 		}
 		else{

@@ -12,7 +12,7 @@
         $sponcer_name="";
         $sponcer_id=$user['sponcer'];
 
-        $date = date('Y-m-d H:i:s');
+        $datetime = date('Y-m-d H:i:s');
 
         $sql="SELECT * FROM pins WHERE member_id='$memberid' AND pin='$selectedPin'";
         $query=$conn->query($sql);
@@ -27,13 +27,17 @@
             }
 
             $sql = "INSERT INTO provide_request(member_id,name,provide_help_no,sponcer_name,sponcer_id,amount,date) 
-                        VALUES('$memberid','$membername','$randno','$sponcer_name','$sponcer_id','$amount','$date'";
-            $conn->query($sql);
+						VALUES('$memberid','$membername','$randno','$sponcer_name','$sponcer_id','$amount','$datetime')";
+            if($conn->query($sql)){
+                $sql = "DELETE FROM pins WHERE pin = '$selectedPin'";
+                $conn->query($sql);
+                $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';    
+            }else{
+            $_SESSION['error'] = $conn->error;    
+            }
 
-            $sql = "DELETE FROM pins WHERE pin = '$selectedPin'";
-            $conn->query($sql);
+            
 
-            $_SESSION['success'] = 'Request sent! Wait for admin to approve your request.';    
         }else{
             $_SESSION['error'] = 'Pin not Found.';
         }
