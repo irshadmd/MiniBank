@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 27, 2020 at 08:41 PM
+-- Generation Time: Jul 08, 2020 at 10:51 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.7
 
@@ -114,7 +114,7 @@ CREATE TABLE `growth` (
   `member_id` varchar(100) NOT NULL,
   `provide_amount` int(50) NOT NULL,
   `growth_amount` int(50) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -167,15 +167,8 @@ CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `title` varchar(500) NOT NULL,
   `message` varchar(500) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `news`
---
-
-INSERT INTO `news` (`id`, `title`, `message`, `date`) VALUES
-(3, 'Welcome', 'Welcome to MiniBank!', '2020-05-31 01:38:18');
 
 -- --------------------------------------------------------
 
@@ -186,7 +179,7 @@ INSERT INTO `news` (`id`, `title`, `message`, `date`) VALUES
 CREATE TABLE `pack` (
   `id` int(11) NOT NULL,
   `amount` int(50) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -315,6 +308,20 @@ CREATE TABLE `send_donation` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sms`
+--
+
+CREATE TABLE `sms` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `member_id` varchar(200) NOT NULL,
+  `phone` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transfer_pin`
 --
 
@@ -371,7 +378,7 @@ CREATE TABLE `working_wallet` (
   `credit` int(50) NOT NULL DEFAULT '0',
   `debit` int(50) NOT NULL DEFAULT '0',
   `narration` varchar(200) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -475,6 +482,12 @@ ALTER TABLE `send_donation`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sms`
+--
+ALTER TABLE `sms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `transfer_pin`
 --
 ALTER TABLE `transfer_pin`
@@ -536,7 +549,7 @@ ALTER TABLE `money`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pack`
@@ -584,6 +597,12 @@ ALTER TABLE `saved`
 -- AUTO_INCREMENT for table `send_donation`
 --
 ALTER TABLE `send_donation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sms`
+--
+ALTER TABLE `sms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
