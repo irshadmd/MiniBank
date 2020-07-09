@@ -16,7 +16,7 @@
             $transfername=$row['name'];
         }
 
-        $sql="SELECT * From pins where member_id='$memberid' LIMIT $transferpin";
+        $sql="SELECT * From pins where member_id='$memberid' and amount='$amount' LIMIT $transferpin";
         $query = $conn->query($sql);
         while($row = $query->fetch_assoc()){
             $pin=$row['pin'];
