@@ -16,8 +16,20 @@
         border: 1px solid black;
     }
 
-    .getdonationbt{
+    .getdonationbt {
         text-align: right;
+    }
+
+    .apd :hover,
+    .apd :active {
+        background-color: green;
+        color: white;
+    }
+
+    .rej :hover,
+    .rej :active {
+        background-color: red;
+        color: white;
     }
 </style>
 
@@ -105,9 +117,9 @@
                                 <div class="form-group row">
                                     <label for="status" class="col-md-4 col-form-label text-md-right">Status</label>
                                     <div class="col-md-6">
-                                        <select name="status" id="status">
-                                            <option value="approved">Approved</option>
-                                            <option value="rejected">Reject</option>
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="approved" style="background-color: green; color :white;">Approved</option>
+                                            <option value="rejected" style="background-color: red; color :white;">Reject</option>
                                         </select>
                                     </div>
                                 </div>
