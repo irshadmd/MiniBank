@@ -12,7 +12,7 @@
 
       if(($datenow>$approvedate) AND ($status=='pendingGet')){
         $sql = "UPDATE provide_help SET status = 'approved' , growth = 'true' WHERE id = '$id'";
-        $query = $conn->query($sql);
+        $conn->query($sql);
 
         $g_amont = $amount*2;
 
@@ -20,8 +20,8 @@
         $conn->query($sql);
 
         $sql = "SELECT * FROM wallet WHERE member_id='$memberid'";
-        $query = $conn->query($sql);
-        $row = $query->fetch_assoc();
+        $queryy = $conn->query($sql);
+        $row = $queryy->fetch_assoc();
         $grow_am = $row['growth'];
         $grow_am = $grow_am + $g_amont;
 
@@ -30,7 +30,7 @@
       }
       else if (($datenow > $approvedate) and ($status == 'approved') and ($bool == 'false')) {
         $sql = "UPDATE provide_help SET growth = 'true' WHERE id = '$id'";
-        $query = $conn->query($sql);
+        $conn->query($sql);
 
         $g_amont = $amount * 2;
 
@@ -38,8 +38,8 @@
         $conn->query($sql);
 
         $sql = "SELECT * FROM wallet WHERE member_id = '$memberid'";
-        $query = $conn->query($sql);
-        $row = $query->fetch_assoc();
+        $queryy = $conn->query($sql);
+        $row = $queryy->fetch_assoc();
         $grow_am = $row['growth'];
         $grow_am = $grow_am + $g_amont;
 
@@ -47,5 +47,4 @@
         $conn->query($sql);
       }
     }
-
 ?>
