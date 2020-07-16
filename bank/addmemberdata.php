@@ -55,6 +55,7 @@
 					VALUES('$memberid','$name','$randno','$sponcer_name','$sponcer_id','$amount_p','$datetime','$fir')";
 			$conn->query($sql);
 
+			//sending sms after registration
 
 			$newphone = '91' . $phone;
 			// Authorisation details.
